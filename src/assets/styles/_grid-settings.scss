@@ -1,0 +1,39 @@
+@include gridle_set_classname_map('grid', ('grid-', '', '%column', '@', '%state'));
+@include gridle_set_classname_map('grid-table', ('grid-', '', 'table', '@', '%state'));
+@include gridle_set_classname_map('grid-adapt', ('grid-', '', 'adapt', '@', '%state'));
+@include gridle_set_classname_map('grid-grow', ('grid-', '', 'grow', '@', '%state'));
+@include gridle_set_classname_map('grid-centered', ('grid-', '', 'centered', '@', '%state'));
+
+@include gridle_setup((
+        context: 12,
+        gutter-width: 20px,
+        debug: true,
+        gridle-vendor-prefix: false,
+        debug-show-class-names: true
+));
+
+@include gridle_register_state(mobile, (
+        max-width : 768px
+));
+
+@include gridle_register_state(tablet, (
+        min-width: 769px,
+        max-width: 1024px
+));
+
+@include gridle_register_state(all-mobile, (
+        max-width: 1024px
+));
+
+@include gridle_register_state(desktop, (
+        min-width: 1025px,
+        max-width: 1599px
+));
+
+@include gridle_register_state(all-desktop, (
+        min-width: 1025px
+));
+
+@include gridle_register_state(large, (
+ min-width: 1600px
+));

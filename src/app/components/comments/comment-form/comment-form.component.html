@@ -1,0 +1,18 @@
+<div class="row commentContent">
+  <form id="commentForm" #commentForm="ngForm" (ngSubmit)="onSubmit(commentForm)" novalidate>
+    <div>
+      
+      <input  type="text" class="input-control" name="firstName"
+      #firstName="ngModel" [(ngModel)]="comment.firstName" required type="text" id="name" required name="name" placeholder="Imię">
+    </div>
+    <div>
+      <input type="text" id="lastname" required name="lastname" placeholder="Nazwisko">
+    </div>
+    <div>
+      <input type="text" id="email" required name="email" placeholder="Email">
+    </div>
+    <div>
+      <textarea name="commentText" id="commentText" cols="30" rows="10" placeholder="Komentarz..."></textarea>
+    </div>
+  </form>
+</div>

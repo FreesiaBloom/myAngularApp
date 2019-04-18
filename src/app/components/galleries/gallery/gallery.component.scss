@@ -1,0 +1,65 @@
+@import "../../../../assets/styles/variables";
+
+.content {
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  padding: 10px 100px 0 100px;
+
+  .imgContainer {
+    display: flex;
+    justify-content: center;
+
+    .imgBase {
+      figure {
+        padding: 0 10px;
+        img {
+          width: 450px;
+        }
+      }
+    }
+
+    .imgList {
+      align-self: flex-start;
+
+      figure {
+        padding: 0 0 8px 0 !important;
+
+        img {
+          width: 100px;
+          height: auto;
+        }
+      }
+    }
+  }
+
+  .headerGallery {
+    padding: 0 0 0 32px;
+
+    div:first-child {
+      padding: 0 0 32px 0;
+      margin: 0 0 32px 0;
+      border-bottom: 1px solid $accent-color;
+
+      h2 {
+        padding: 0 0 4px 0;
+      }
+      
+      .tags {
+        display: flex;
+        padding: 8px 0 16px 0;
+        
+        .tag {
+          padding: 4px 8px;
+          background-color: $lighter-gray;
+          margin: 0 8px 0 0;
+          
+          &:last-child {
+            margin: 0;
+          }
+        }
+      }
+
+    }
+  }
+}

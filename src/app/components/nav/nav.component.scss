@@ -1,0 +1,50 @@
+@import "../../../assets/styles/variables";
+
+nav {
+    border-bottom: 1px solid $accent-color;
+    padding-top: 16px;
+
+    .logo {
+        display: grid !important;
+        justify-content: center; 
+        img {
+            width: 250px;
+            height: auto;
+        }
+    }
+
+    .links {
+        display: grid !important;
+        justify-content: end; 
+        padding: 0 56px 0 0 !important;
+        ul {
+            display: flex;
+
+            li {
+                text-align: center;
+                padding: 0 16px 0 0;
+
+                &:last-child{
+                    padding: 0;
+                }
+
+                a {
+                    display: inline-block;
+                    text-align: center;
+                    text-transform: uppercase;
+
+                    &:hover {
+                        font-weight: bold;
+                    }
+
+                    &.is-active {
+                        font-weight: bold;
+                        text-decoration: underline;
+                    }
+                }
+            }
+        }
+
+    }
+    
+}

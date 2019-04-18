@@ -1,0 +1,62 @@
+<div class="row header">
+  <div class="grid-centered">
+    <h1>
+      {{ title }}
+    </h1>
+    <br />
+    <p>{{ description }}</p>
+  </div>
+</div>
+<br />
+<div class="row navigationGallery" *ngIf="galleries">
+  <div class="grid-6 count">
+    <span>Ilosć prac {{ galleries.length }}</span>
+    <div class="buttons">
+      <button class="button button-small" (click)="exportGalleries()">
+        Export galleries
+      </button>
+      <button *ngIf="galleries.length" class="button button-small" (click)="removeGalleries()">
+        Remove galleries
+      </button>
+    </div>
+  </div>
+  <div class="grid-6 search">
+    <div class="row" *ngIf="galleries.length">
+      <div class="searchDate">
+        <app-gallery-search (searchValue)="setSearchValue($event)"></app-gallery-search>
+      </div>
+      <div class="searchName">
+        <app-gallery-select (selectValue)="setSelectValue($event)"></app-gallery-select>
+      </div>
+    </div>
+  </div>
+</div>
+<br />
+<div class="row navigationGallery" *ngIf="galleries">
+  <div class="paging">
+    <button class="button left" (click)="prevPage()">
+      <span class="fa fa-caret-left"></span>
+    </button>
+    <span *ngFor="let item of numberOfPages; let i = index">
+      <button class="button button-small" [ngClass]="{'active': i === currentPage}"
+        (click)="setCurrentPage(i)">{{i + 1}}</button>
+    </span>
+    <button class="button right" (click)="nextPage()">
+      <span class="fa fa-caret-right"></span>
+    </button>
+    <span class="pages">Strona: {{currentPage+1}} z {{numberOfPages.length}}</span>
+  </div>
+</div>
+
+<br />
+<div class="row displayGallery" *ngIf="galleries && galleries.length">
+  <app-gallery-item *ngFor="
+      let item of galleries
+        | searchGalleries: searchValue
+        | selectedDate: selectedValue
+        | slice:start:end;
+      trackBy: item?.galleryId
+    " [gallery]="item" (deleteGallery)="removeGallery($event)" (deleteGallery)="removeGallery($event)"
+    class="grid-4 grid-centered imgBox">
+  </app-gallery-item>
+</div>

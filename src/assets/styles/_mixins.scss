@@ -1,0 +1,13 @@
+@mixin hiddenAnimation {
+    transition: opacity 0.5s, visibility 0.5s 0s;
+    visibility: hidden;
+    opacity: 0;
+}
+
+@mixin visibleAnimation {
+    transition: opacity 0.5s, visibility 0.5s;
+    will-change: opacity, visibility;
+    visibility: visible;
+    opacity: 1
+}
+

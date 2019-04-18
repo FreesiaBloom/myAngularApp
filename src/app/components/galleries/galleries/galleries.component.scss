@@ -1,0 +1,92 @@
+@import "../../../../assets/styles/variables";
+
+.header {
+    padding-top: 16px;
+
+    div {
+        text-align: center;
+        display: grid;
+        justify-content: center;
+
+        p {
+            color: $dark-gray;
+            width: 600px;
+        }
+    }
+}
+
+.navigationGallery {
+    display: flex;
+    justify-content: space-between;
+    padding: 16px 40px 32px 40px;
+
+    .count {
+        display: flex;
+        align-items: center;
+        
+        .buttons {
+            padding: 0 0 0 16px;
+    
+            button {
+                margin: 0 16px 0 0;
+    
+                &:last-child {
+                    margin: 0;
+                }
+            }
+        }
+    }
+
+    .paging {
+        .fa {
+            color: $dark-gray;
+        }
+
+        .button {
+            &.active {
+                background-color: $brand-primary;
+                border-color: $brand-primary;
+            }
+
+            &.left, &.right {
+                line-height: unset;
+                background-color: $white;
+                border: 1px solid $gray;
+            }
+
+            &.left {
+                padding: 6px 12px 6px 10px;
+                margin: 0 8px 0 0;
+            }
+
+            &.right {
+                padding: 6px 10px 6px 12px;
+            }
+        }
+
+        span {
+            margin: 0 8px 0 0;
+
+            &:last-child {
+                margin: 0;
+            }
+        }
+
+        .pages {
+            margin: 0 0 0 8px !important;
+        }
+    }
+
+    .search {
+        display: grid;
+        justify-content: flex-end;
+
+        .row {
+            display: flex;
+            .searchDate {
+                padding: 0 16px 0 0;
+            }
+        }
+    }
+}
+

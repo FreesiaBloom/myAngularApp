@@ -1,0 +1,36 @@
+<div class="row content" *ngIf="gallery">
+  <div class="grid-6 imgContainer">
+    <div class="imgBase">
+      <figure>
+        <img alt="{{ gallery.title }}" src="{{ gallery.thumbUrl }}" />
+      </figure>
+    </div>
+
+    <div class="imgList" *ngIf="gallery.photos">
+      <div *ngFor="let item of gallery.photos">
+        <figure>
+          <img alt="{{ item.imgUrl }}" src="{{ item.imgUrl }}" />
+        </figure>
+      </div>
+    </div>
+  </div>
+  <div class="grid-6 headerGallery">
+    <div class="row">
+
+      <h2>{{ gallery.title }}</h2>
+      <p>
+        <small>{{ gallery.dateCreated | polishDate | uppercase }}</small>
+      </p>
+      <div *ngIf="gallery.tags" class="tags">
+        <div *ngFor="let item of gallery.tags" class="tag">
+          <span>{{ item }}</span>
+        </div>
+      </div>
+      <p>{{ gallery.galleryId }}</p>
+      <p>{{ gallery.description }}</p>
+    </div>
+    <div class="row">
+      <app-comment-form [galleryId]="gallery.galleryId"></app-comment-form>
+    </div>
+  </div>
+</div>
