@@ -105,6 +105,9 @@
           <h5>{{ comment.firstName }}</h5>
           <h5>{{ comment.lastName }}</h5>
           <p class="commentDate">{{ comment.dateCreated | polishDate }}</p>
+          <button class="button button-small" (click)="removeComment(comment.commentId)">
+            Usuń komentarz
+          </button>
         </div>
       </div>
       <p>{{ comment.message }}</p>
