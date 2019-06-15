@@ -104,8 +104,8 @@
         <div class="commentName">
           <h5>{{ comment.firstName }}</h5>
           <h5>{{ comment.lastName }}</h5>
+          <p class="commentDate">{{ comment.dateCreated | polishDate }}</p>
         </div>
-        <p class="commentDate">{{ comment.dateCreated | polishDate }}</p>
       </div>
       <p>{{ comment.message }}</p>
     </div>

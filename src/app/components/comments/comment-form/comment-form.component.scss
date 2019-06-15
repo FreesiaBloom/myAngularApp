@@ -1,7 +1,7 @@
 @import "../../../../assets/styles/variables";
 
 .commentForm {
-    width: 50%;
+    width: 60%;
     margin: 0 0 32px 0;
   .commentHeader {
     padding: 0 0 16px 0;
@@ -46,12 +46,12 @@
         }
         display: flex;
         padding: 0 0 8px 0;
+        .commentDate {
+          font-size: 14px;
+          color: $light-gray;
+        }
       }
 
-      .commentDate {
-        font-size: 14px;
-        color: $light-gray;
-      }
     }
   }
 }
