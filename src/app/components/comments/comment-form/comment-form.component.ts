@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { IGallery } from 'src/app/interfaces/IGallery';
 import { IComment } from 'src/app/interfaces/IComments';
+import { HttpClient } from '@angular/common/http';
 import { HttpHeaders } from '@angular/common/http';
 
 @Component({
@@ -20,25 +21,43 @@ export class CommentFormComponent implements OnInit {
   };
 
   comment: IComment;
+  commentsList: IComment;
+  commentSubmitted = false;
 
-  constructor() { }
+  constructor(private http: HttpClient) { }
 
   ngOnInit() {
     this.comment = this.setEmptyComment();
-    console.log(this.comment);
+    this.getComments();
    }
 
    private setEmptyComment() {
     const newDate = new Date();
+
     return {
-    galleryId: this.galleryId,
-    firstName: '',
-    lastName: '',
-    email: '',
-    message: '',
-    dateCreated: newDate
+      galleryId: this.galleryId,
+      firstName: '',
+      lastName: '',
+      email: '',
+      message: '',
+      dateCreated: newDate
     };
    }
-   
 
+   onSubmit(commentForm) {
+     this.http.post(`http://project.usagi.pl/comment`, this.comment,
+      this.httpOptions).toPromise().then((response: IComment) => {
+      console.log(response);
+      });
+      this.commentSubmitted = true;
+      this.getComments();
+      this.comment = this.setEmptyComment()
+   }
+   
+   getComments() {
+    this.http.get('http://project.usagi.pl/comment/byGallery/' + this.galleryId, this.httpOptions).toPromise().then((postedComment: IComment) => {
+      this.commentsList = postedComment;
+    });
+    console.log(this.commentsList)
+   }
 }

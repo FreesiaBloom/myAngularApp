@@ -29,6 +29,14 @@ input, select {
     height: 32px;
 }
 
+input, select, textarea{
+    color: $black;
+}
+
+textarea:focus, input:focus {
+    color: $black;
+}
+
 .input-control {
     display: block;
     width: 100%;
@@ -106,4 +114,8 @@ textarea.input-control {
             border-color: $brand-danger;
         }
     }
+}
+
+.form-error {
+    color: $brand-danger-active;
 }

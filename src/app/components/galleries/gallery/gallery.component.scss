@@ -34,20 +34,23 @@
   }
 
   .headerGallery {
-    padding: 0 0 0 32px;
+    padding: 0 0 0 24px;
+
+    .borderBottom {
+      border-bottom: 1px solid $accent-color;
+    }
 
     div:first-child {
       padding: 0 0 32px 0;
       margin: 0 0 32px 0;
-      border-bottom: 1px solid $accent-color;
 
       h2 {
-        padding: 0 0 4px 0;
+        padding: 0 0 16px 0;
       }
       
       .tags {
         display: flex;
-        padding: 8px 0 16px 0;
+        padding: 16px 0 24px 00;
         
         .tag {
           padding: 4px 8px;
@@ -61,5 +64,9 @@
       }
 
     }
+  }
+
+  &.commentSection {
+    display: block;
   }
 }

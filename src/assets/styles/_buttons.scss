@@ -42,7 +42,16 @@
 
     &.disabled, &[disabled] {
         cursor: $cursor-disabled;
-        opacity: 0.65;
+        opacity: 0.5;
+        background-color: $lightest-gray;
+    }
+
+    &:hover {
+        background-color: $gray;
+    }
+
+    &.disabled:hover, &[disabled]:hover {
+        background-color: $lightest-gray;
     }
 }
 

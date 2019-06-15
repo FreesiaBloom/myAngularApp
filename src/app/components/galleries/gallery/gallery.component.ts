@@ -31,7 +31,6 @@ export class GalleryComponent implements OnInit {
       this.gallery = foundGalleries;*/
       this.http.get('http://project.usagi.pl/gallery/' + this.galleryId,
       this.httpOptions).toPromise().then((response: IGallery) => {
-        console.log(response);
         this.gallery = response;
       });
     }
