@@ -37,7 +37,30 @@
         }
     }
 
+    .search {
+        display: grid;
+        justify-content: flex-end;
+
+        .row {
+            display: flex;
+            .searchDate {
+                padding: 0 16px 0 0;
+            }
+        }
+    }
+}
+
+.galleryItemsCentered {
+    display: flex;
+    justify-content: center;
+
+    .imgBox {
+        margin: 0 32px;
+    }
+
     .paging {
+        padding: 0 0 16px 0;
+
         .fa {
             color: $dark-gray;
         }
@@ -76,17 +99,13 @@
             margin: 0 0 0 8px !important;
         }
     }
-
-    .search {
-        display: grid;
-        justify-content: flex-end;
-
-        .row {
-            display: flex;
-            .searchDate {
-                padding: 0 16px 0 0;
-            }
-        }
-    }
 }
 
+.addingGallery {
+    display: flex;
+    padding: 16px 40px 32px 40px;
+
+    .button-back {
+        margin: 0 16px 0 0;
+    }
+}

@@ -8,21 +8,21 @@
   </div>
 </div>
 <br />
-<div class="row navigationGallery" *ngIf="galleries">
+<div class="row navigationGallery" *ngIf="galleries && !showGalleryForm">
   <div class="grid-6 count">
-    <span *ngIf="!showGalleryForm" >Ilosć prac {{ galleries.length }}</span>
+    <span >Ilosć prac {{ galleries.length }}</span>
     <div class="buttons">
-      <button *ngIf="!showGalleryForm" class="button button-small" (click)="exportGalleries()">
+      <button class="button button-small" (click)="exportGalleries()">
         Export galleries
       </button>
-      <button *ngIf="galleries.length && !showGalleryForm" class="button button-small" (click)="removeGalleries()">
+      <button *ngIf="galleries.length" class="button button-small" (click)="removeGalleries()">
         Remove galleries
       </button>
-      <button class="button button-small" (click)="showGalleryForm=true" *ngIf="!showGalleryForm"><i
+      <button class="button button-small" (click)="showGalleryForm=true"><i
           class="fa fa-plus"></i></button>
     </div>
   </div>
-  <div class="grid-6 search" *ngIf="!showGalleryForm">
+  <div class="grid-6 search">
     <div class="row" *ngIf="galleries.length">
       <div class="searchDate">
         <app-gallery-search (searchValue)="setSearchValue($event)"></app-gallery-search>
@@ -37,7 +37,7 @@
 <div *ngIf="!showGalleryForm">
 
 
-  <div class="row navigationGallery" *ngIf="galleries">
+  <div class="row galleryItemsCentered" *ngIf="galleries">
     <div class="paging">
       <button class="button left" (click)="prevPage()">
         <span class="fa fa-caret-left"></span>
@@ -55,19 +55,22 @@
 
   <br />
   <div class="row displayGallery" *ngIf="galleries && galleries.length">
-    <app-gallery-item *ngFor="
+    <div class="galleryItemsCentered">
+
+      <app-gallery-item *ngFor="
       let item of galleries
-        | searchGalleries: searchValue
-        | selectedDate: selectedValue
-        | slice:start:end;
+      | searchGalleries: searchValue
+      | selectedDate: selectedValue
+      | slice:start:end;
       trackBy: item?.galleryId
-    " [gallery]="item" (deleteGallery)="removeGallery($event)" (deleteGallery)="removeGallery($event)"
-      class="grid-4 grid-centered imgBox">
-    </app-gallery-item>
+      " [gallery]="item" (deleteGallery)="removeGallery($event)" (deleteGallery)="removeGallery($event)"
+        class="grid-4 grid-centered imgBox">
+      </app-gallery-item>
+    </div>
   </div>
 </div>
 
-<div class="row navigationGallery" *ngIf="showGalleryForm">
+<div class="row addingGallery" *ngIf="showGalleryForm">
+  <button class="button button-small button-back" (click)="showGalleryForm=false">Back</button>
   <h2>Add new gallery</h2>
-  <button class="button button-small" (click)="showGalleryForm=false">Back</button>
 </div>
