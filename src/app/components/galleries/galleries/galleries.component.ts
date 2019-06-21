@@ -22,6 +22,7 @@ export class GalleriesComponent implements OnInit {
   start: number;
   end: number;
   numberOfPages: any;
+  showGalleryForm: boolean;
 
   httpOptions = {
     headers: new HttpHeaders({
@@ -120,6 +121,7 @@ export class GalleriesComponent implements OnInit {
 
   ngOnInit() {
     this.setCurrentPage();
+    this.showGalleryForm = false;
 
     //this.galleries = [];
     this.http.get('http://project.usagi.pl/gallery',

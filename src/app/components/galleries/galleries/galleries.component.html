@@ -10,17 +10,19 @@
 <br />
 <div class="row navigationGallery" *ngIf="galleries">
   <div class="grid-6 count">
-    <span>Ilosć prac {{ galleries.length }}</span>
+    <span *ngIf="!showGalleryForm" >Ilosć prac {{ galleries.length }}</span>
     <div class="buttons">
-      <button class="button button-small" (click)="exportGalleries()">
+      <button *ngIf="!showGalleryForm" class="button button-small" (click)="exportGalleries()">
         Export galleries
       </button>
-      <button *ngIf="galleries.length" class="button button-small" (click)="removeGalleries()">
+      <button *ngIf="galleries.length && !showGalleryForm" class="button button-small" (click)="removeGalleries()">
         Remove galleries
       </button>
+      <button class="button button-small" (click)="showGalleryForm=true" *ngIf="!showGalleryForm"><i
+          class="fa fa-plus"></i></button>
     </div>
   </div>
-  <div class="grid-6 search">
+  <div class="grid-6 search" *ngIf="!showGalleryForm">
     <div class="row" *ngIf="galleries.length">
       <div class="searchDate">
         <app-gallery-search (searchValue)="setSearchValue($event)"></app-gallery-search>
@@ -32,31 +34,40 @@
   </div>
 </div>
 <br />
-<div class="row navigationGallery" *ngIf="galleries">
-  <div class="paging">
-    <button class="button left" (click)="prevPage()">
-      <span class="fa fa-caret-left"></span>
-    </button>
-    <span *ngFor="let item of numberOfPages; let i = index">
-      <button class="button button-small" [ngClass]="{'active': i === currentPage}"
-        (click)="setCurrentPage(i)">{{i + 1}}</button>
-    </span>
-    <button class="button right" (click)="nextPage()">
-      <span class="fa fa-caret-right"></span>
-    </button>
-    <span class="pages">Strona: {{currentPage+1}} z {{numberOfPages?.length}}</span>
-  </div>
-</div>
+<div *ngIf="!showGalleryForm">
 
-<br />
-<div class="row displayGallery" *ngIf="galleries && galleries.length">
-  <app-gallery-item *ngFor="
+
+  <div class="row navigationGallery" *ngIf="galleries">
+    <div class="paging">
+      <button class="button left" (click)="prevPage()">
+        <span class="fa fa-caret-left"></span>
+      </button>
+      <span *ngFor="let item of numberOfPages; let i = index">
+        <button class="button button-small" [ngClass]="{'active': i === currentPage}"
+          (click)="setCurrentPage(i)">{{i + 1}}</button>
+      </span>
+      <button class="button right" (click)="nextPage()">
+        <span class="fa fa-caret-right"></span>
+      </button>
+      <span class="pages">Strona: {{currentPage+1}} z {{numberOfPages?.length}}</span>
+    </div>
+  </div>
+
+  <br />
+  <div class="row displayGallery" *ngIf="galleries && galleries.length">
+    <app-gallery-item *ngFor="
       let item of galleries
         | searchGalleries: searchValue
         | selectedDate: selectedValue
         | slice:start:end;
       trackBy: item?.galleryId
     " [gallery]="item" (deleteGallery)="removeGallery($event)" (deleteGallery)="removeGallery($event)"
-    class="grid-4 grid-centered imgBox">
-  </app-gallery-item>
+      class="grid-4 grid-centered imgBox">
+    </app-gallery-item>
+  </div>
+</div>
+
+<div class="row navigationGallery" *ngIf="showGalleryForm">
+  <h2>Add new gallery</h2>
+  <button class="button button-small" (click)="showGalleryForm=false">Back</button>
 </div>
