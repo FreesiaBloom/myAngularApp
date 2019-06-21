@@ -3,6 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { IGallery } from 'src/app/interfaces/IGallery';
 import { Galleries } from 'src/app/constants/galleries.constant';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { IComment } from 'src/app/interfaces/IComments';
 
 @Component({
   selector: 'app-gallery',
@@ -34,6 +35,5 @@ export class GalleryComponent implements OnInit {
         this.gallery = response;
       });
     }
-
 
   }

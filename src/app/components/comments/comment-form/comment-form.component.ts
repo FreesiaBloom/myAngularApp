@@ -31,11 +31,7 @@ export class CommentFormComponent implements OnInit {
 
   ngOnInit() {
     this.comment = this.setEmptyComment();
-    this.http.get('http://project.usagi.pl/comment/byGallery/' + this.galleryId, this.httpOptions).toPromise().then((postedComment: IComment[]) => {
-      this.commentsList = postedComment;
-    });
     this.getComments();
-    console.log(this.galleryId);
    }
 
    private setEmptyComment() {
@@ -54,12 +50,10 @@ export class CommentFormComponent implements OnInit {
    onSubmit(commentForm) {
      this.http.post(`http://project.usagi.pl/comment`, this.comment,
       this.httpOptions).toPromise().then((response: IComment) => {
-      console.log(response);
-      });
       this.commentSubmitted = true;
-      console.log(this.galleryId);
       this.getComments();
-      this.comment = this.setEmptyComment()
+      this.comment = this.setEmptyComment();
+      });
    }
    
    getComments() {
@@ -69,13 +63,11 @@ export class CommentFormComponent implements OnInit {
    }
 
    removeComment(commentId) {
-     console.log('commentId', commentId);
      this.http.post('http://project.usagi.pl/comment/delete/' + commentId, this.comment, this.httpOptions).toPromise().then((response: IComment) => {
       console.log('success', response);
+      this.getComments();
       }, (errResponse) => {
         console.log('error', errResponse);
       });
-      console.log('this.commentsList', this.commentsList)
-      this.getComments();
   }
 }

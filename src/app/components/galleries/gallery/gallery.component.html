@@ -29,6 +29,6 @@
     </div>
   </div>
 </div>
-<div>
+<div *ngIf="gallery">
   <app-comment-form class="row content commentSection" [galleryId]="gallery.galleryId"></app-comment-form>
 </div>
