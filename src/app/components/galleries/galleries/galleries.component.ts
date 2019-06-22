@@ -27,12 +27,13 @@ export class GalleriesComponent implements OnInit {
   httpOptions = {
     headers: new HttpHeaders({
       'Content-Type': 'application/json',
-      'Authorization': '74'
+      Authorization: '74'
     })
   };
 
   constructor(private http: HttpClient) {
     this.title = 'Moje skromne portfolio';
+    // tslint:disable-next-line:max-line-length
     this.description = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin vel orci eleifend, egestas massa ut, accumsan dui. Duis vel orci at neque accumsan porttitor.';
     this.galleries = Galleries;
     this.searchValue = '';
@@ -122,14 +123,13 @@ export class GalleriesComponent implements OnInit {
   ngOnInit() {
     this.setCurrentPage();
     this.showGalleryForm = false;
-
-    //this.galleries = [];
     this.http.get('http://project.usagi.pl/gallery',
       this.httpOptions).toPromise().then((response: IGallery[]) => {
         this.galleries = response;
         this.numberOfPages = Array(Math.ceil(this.galleries.length / this.limit)).fill(1);
       });
 
+    // tslint:disable-next-line:radix
     this.currentPage = parseInt(localStorage.getItem('galleryPage')) || 0;
     this.setCurrentPage(this.currentPage);
   }
