@@ -1,6 +1,6 @@
 export interface IComment {
     galleryId: string;
-    commentId?: string; //zostanie dodany podczas zapisu do bazy
+    commentId?: string;
     firstName: string;
     lastName: string;
     email: string;

@@ -11,12 +11,13 @@ import { HttpHeaders } from '@angular/common/http';
 export class GalleryItemComponent implements OnInit {
 
   @Input() gallery: IGallery;
+  // tslint:disable-next-line:ban-types
   @Output() deleteGallery: EventEmitter<String> = new EventEmitter<String>();
 
   httpOptions = {
     headers: new HttpHeaders({
       'Content-Type': 'application/json',
-      'Authorization': '74'
+      Authorization: '74'
     })
   };
 

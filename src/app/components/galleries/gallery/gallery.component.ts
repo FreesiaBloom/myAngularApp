@@ -14,26 +14,31 @@ export class GalleryComponent implements OnInit {
 
   private galleryId: string;
   gallery: IGallery;
+  showGalleryForm: boolean;
 
   httpOptions = {
     headers: new HttpHeaders({
       'Content-Type': 'application/json',
-      'Authorization': '74'
+      Authorization: '74'
     })
   };
 
-  constructor(private route: ActivatedRoute, private http: HttpClient) {
-    
-   }
+  constructor(private route: ActivatedRoute, private http: HttpClient) { }
 
   ngOnInit() {
+    this.showGalleryForm = false;
     this.galleryId = this.route.snapshot.paramMap.get('galleryId');
-    /*let foundGalleries = Galleries.find((item) => item.galleryId === this.galleryId);
-      this.gallery = foundGalleries;*/
-      this.http.get('http://project.usagi.pl/gallery/' + this.galleryId,
+    this.http.get('http://project.usagi.pl/gallery/' + this.galleryId,
       this.httpOptions).toPromise().then((response: IGallery) => {
         this.gallery = response;
       });
-    }
-
   }
+
+  saveGallery(event) {
+    this.http.post('http://project.usagi.pl/gallery/' + this.galleryId, event, this.httpOptions).toPromise().then((response: IGallery) => {
+      this.gallery = response;
+      this.showGalleryForm = false;
+    });
+  }
+
+}

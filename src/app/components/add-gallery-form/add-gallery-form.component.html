@@ -1,0 +1,60 @@
+<form class="container addGallery" #galleryForm="ngForm" (ngSubmit)="onSubmit()" novalidate>
+  <div class="grid-16 row formContent">
+    <div class="input-group">
+      <label>Title</label>
+      <input type="text" class="input-control" name="title" #title="ngModel" [(ngModel)]="gallery.title" required>
+      <p class="text-danger" [hidden]="title.valid || title.pristine">Title required!</p>
+    </div>
+    <div class="input-group">
+      <label>Thumbnail</label>
+      <input type="text" class="input-control" name="thumbUrl" #thumbUrl="ngModel" [(ngModel)]="gallery.thumbUrl"
+        required>
+      <p class="text-danger" [hidden]="thumbUrl.valid || thumbUrl.pristine">Thumbnail required!</p>
+    </div>
+    <div class="input-group">
+      <label>Data</label>
+      <input type="text" class="input-control" name="dateCreated" #dateCreated="ngModel"
+        [(ngModel)]="gallery.dateCreated" required>
+      <p class="text-danger" [hidden]="dateCreated.valid || dateCreated.pristine">Date required!</p>
+    </div>
+    <div class="input-group">
+      <label>Description</label>
+      <textarea class="input-control" name="description" #description="ngModel" [(ngModel)]="gallery.description"
+        required></textarea>
+      <p class="text-danger" [hidden]="description.valid || description.pristine">Description required!</p>
+    </div>
+  </div>
+  <div class="row">
+    <div class="addingPhoto">
+      <h4>Photos</h4>
+      <button type="button" (click)="addPhoto()" class="button button-small">Add photo</button>
+    </div>
+  </div>
+  <fieldset class="formPhoto row" *ngFor="let photo of gallery.photos; let i = index">
+    <div>
+      <label>Photo thumbnail</label>
+      <div class="photoThumbnail">
+        <div class="inputThumbnail">
+          <input type="text" class="input-control" name="thumbUrl{{i}}" #thumbUrl="ngModel" [(ngModel)]="photo.thumbUrl"
+            required>
+          <p class="text-danger" [hidden]="thumbUrl.valid || thumbUrl.pristine">Thumbnail required!</p>
+        </div>
+        <div>
+          <button type="button" (click)="removePhoto(i)" class="button button-small">
+            <i class="fa fa-remove"></i>
+          </button>
+        </div>
+      </div>
+      <div class="inputFullPhoto">
+        <label>Full photo</label>
+        <input type="text" class="input-control" name="imgUrl{{i}}" #imgUrl="ngModel" [(ngModel)]="photo.imgUrl"
+          required>
+        <p class="text-danger" [hidden]="imgUrl.valid || imgUrl.pristine">Photo required!</p>
+      </div>
+    </div>
+  </fieldset>
+
+  <div class="row savingGallery">
+    <button class="button button-small" [disabled]="!galleryForm.form.valid">Save gallery</button>
+  </div>
+</form>

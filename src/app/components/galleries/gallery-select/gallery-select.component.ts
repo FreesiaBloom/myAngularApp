@@ -10,8 +10,9 @@ import { Galleries } from '../../../constants/galleries.constant';
 export class GallerySelectComponent implements OnInit {
 
   @Output()
+  // tslint:disable-next-line:ban-types
   selectValue: EventEmitter<String> = new EventEmitter<String>();
-  
+
   value: string;
   galleries: IGallery[];
 

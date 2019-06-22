@@ -1,4 +1,4 @@
-<div class="row content" *ngIf="gallery">
+<div class="row content" *ngIf="gallery && !showGalleryForm">
   <div class="grid-6 imgContainer">
     <div class="imgBase">
       <figure>
@@ -16,7 +16,10 @@
   </div>
   <div class="grid-6 headerGallery">
     <div class="row borderBottom">
-      <h2>{{ gallery.title }}</h2>
+      <div class="headerTitle">
+        <h2>{{ gallery.title }}</h2>
+        <button class="button button-small" (click)="showGalleryForm=true">Edit gallery</button>
+      </div>
       <p>
         <small>{{ gallery.dateCreated | polishDate | uppercase }}</small>
       </p>
@@ -25,10 +28,20 @@
           <span>{{ item }}</span>
         </div>
       </div>
-      <p>{{ gallery.description }}</p>
+      <p class="description">{{ gallery.description }}</p>
     </div>
   </div>
 </div>
-<div *ngIf="gallery">
+<div class="row content" *ngIf="gallery && !showGalleryForm">
   <app-comment-form class="row content commentSection" [galleryId]="gallery.galleryId"></app-comment-form>
+</div>
+
+<div class="row addingGallery container" *ngIf="showGalleryForm">
+  <div class="addingHeader">
+    <button class="button button-small button-back" (click)="showGalleryForm=false">Back</button>
+    <h2>Edit gallery</h2>
+  </div>
+  <div class="row">
+    <app-add-gallery-form style="width: 100%;"  [(gallery)]="gallery" (saveGallery)="saveGallery($event)"></app-add-gallery-form>
+  </div>
 </div>

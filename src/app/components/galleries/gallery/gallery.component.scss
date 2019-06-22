@@ -38,16 +38,18 @@
 
     .borderBottom {
       border-bottom: 1px solid $accent-color;
-    }
+      .headerTitle {
+        display: flex;
 
-    div:first-child {
-      padding: 0 0 32px 0;
-      margin: 0 0 32px 0;
+        h2 {
+          margin: 0 16px 0 0;
+        }
 
-      h2 {
-        padding: 0 0 16px 0;
+        button.button-small {
+          margin: 0 0 16px 0;
+        }
       }
-      
+
       .tags {
         display: flex;
         padding: 16px 0 24px 00;
@@ -62,11 +64,24 @@
           }
         }
       }
+      .description {
+        padding: 0 0 16px 0;
+      }
+    }
 
+    &.commentSection {
+      margin: block;
     }
   }
+}
 
-  &.commentSection {
-    display: block;
+.addingGallery {
+  .addingHeader {
+      display: flex;
+      padding-top: 32px;
+      padding-bottom: 32px;
+      .button-back {
+          margin: 0 16px 0 0;
+      }
   }
 }

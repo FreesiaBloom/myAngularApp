@@ -6,12 +6,13 @@ import { Component, OnInit, Output, EventEmitter } from '@angular/core';
   styleUrls: ['./gallery-search.component.scss']
 })
 export class GallerySearchComponent implements OnInit {
-  
+
   @Output()
+  // tslint:disable-next-line:ban-types
   searchValue: EventEmitter<String> = new EventEmitter<String>();
-  
+
   value: string;
-  
+
   constructor() { }
 
   ngOnInit() {

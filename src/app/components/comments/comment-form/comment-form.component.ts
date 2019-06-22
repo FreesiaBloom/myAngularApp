@@ -1,5 +1,4 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { IGallery } from 'src/app/interfaces/IGallery';
 import { IComment } from 'src/app/interfaces/IComments';
 import { HttpClient } from '@angular/common/http';
 import { HttpHeaders } from '@angular/common/http';
@@ -17,7 +16,7 @@ export class CommentFormComponent implements OnInit {
   httpOptions = {
     headers: new HttpHeaders({
       'Content-Type': 'application/json',
-      'Authorization': '74'
+      Authorization: '74'
     })
   };
 
@@ -27,14 +26,14 @@ export class CommentFormComponent implements OnInit {
 
   constructor(private http: HttpClient) {
     this.commentsList = [];
-   }
+  }
 
   ngOnInit() {
     this.comment = this.setEmptyComment();
     this.getComments();
-   }
+  }
 
-   private setEmptyComment() {
+  private setEmptyComment() {
     const newDate = new Date();
 
     return {
@@ -45,29 +44,31 @@ export class CommentFormComponent implements OnInit {
       message: '',
       dateCreated: newDate
     };
-   }
+  }
 
-   onSubmit(commentForm) {
-     this.http.post(`http://project.usagi.pl/comment`, this.comment,
+  onSubmit(commentForm) {
+    this.http.post(`http://project.usagi.pl/comment`, this.comment,
       this.httpOptions).toPromise().then((response: IComment) => {
-      this.commentSubmitted = true;
-      this.getComments();
-      this.comment = this.setEmptyComment();
+        this.commentSubmitted = true;
+        this.getComments();
+        this.comment = this.setEmptyComment();
       });
-   }
-   
-   getComments() {
+  }
+
+  getComments() {
+    // tslint:disable-next-line:max-line-length
     this.http.get('http://project.usagi.pl/comment/byGallery/' + this.galleryId, this.httpOptions).toPromise().then((postedComment: IComment[]) => {
       this.commentsList = postedComment;
     });
-   }
+  }
 
-   removeComment(commentId) {
-     this.http.post('http://project.usagi.pl/comment/delete/' + commentId, this.comment, this.httpOptions).toPromise().then((response: IComment) => {
+  removeComment(commentId) {
+    // tslint:disable-next-line:max-line-length
+    this.http.post('http://project.usagi.pl/comment/delete/' + commentId, this.comment, this.httpOptions).toPromise().then((response: IComment) => {
       console.log('success', response);
       this.getComments();
-      }, (errResponse) => {
-        console.log('error', errResponse);
-      });
+    }, (errResponse) => {
+      console.log('error', errResponse);
+    });
   }
 }

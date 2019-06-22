@@ -1,0 +1,40 @@
+.addGallery {
+    .formContent {
+        display: block;
+    }
+
+    .formPhoto {
+        .inputFullPhoto {
+            margin-bottom: 16px;
+        }
+        .photoThumbnail {
+            display: flex;
+            margin-bottom: 16px;
+
+            .inputThumbnail {
+                width: 100%;
+                margin-right: 16px;
+            }
+        }
+    }
+    
+    .addingPhoto {
+        margin: 24px 0 16px 0;
+    }
+    
+    .addingPhoto {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        
+        button {
+            margin: 0 0 0 16px;
+        }
+    }
+
+    .savingGallery {
+        margin: 16px 0;
+        display: flex;
+        justify-content: center;
+    }
+}
