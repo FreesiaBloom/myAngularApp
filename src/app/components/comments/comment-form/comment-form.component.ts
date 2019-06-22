@@ -1,5 +1,4 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { IGallery } from 'src/app/interfaces/IGallery';
 import { IComment } from 'src/app/interfaces/IComments';
 import { HttpClient } from '@angular/common/http';
 import { HttpHeaders } from '@angular/common/http';

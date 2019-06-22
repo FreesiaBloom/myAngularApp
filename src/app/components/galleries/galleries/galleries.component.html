@@ -7,36 +7,31 @@
     <p>{{ description }}</p>
   </div>
 </div>
-<br />
-<div class="row navigationGallery" *ngIf="galleries && !showGalleryForm">
-  <div class="grid-6 count">
-    <span >Ilosć prac {{ galleries.length }}</span>
+
+<div class="navigationGallery container" *ngIf="galleries && !showGalleryForm">
+
     <div class="buttons">
+      <span>Ilosć prac {{ galleries.length }}</span>
       <button class="button button-small" (click)="exportGalleries()">
         Export galleries
       </button>
       <button *ngIf="galleries.length" class="button button-small" (click)="removeGalleries()">
         Remove galleries
       </button>
-      <button class="button button-small" (click)="showGalleryForm=true"><i
-          class="fa fa-plus"></i></button>
+      <button class="button button-small" (click)="showGalleryForm=true"><i class="fa fa-plus"></i></button>
     </div>
-  </div>
-  <div class="grid-6 search">
-    <div class="row" *ngIf="galleries.length">
-      <div class="searchDate">
+    <div class="search" *ngIf="galleries.length">
+      <div class="searchBreak">
         <app-gallery-search (searchValue)="setSearchValue($event)"></app-gallery-search>
       </div>
-      <div class="searchName">
+      <div>
         <app-gallery-select (selectValue)="setSelectValue($event)"></app-gallery-select>
       </div>
     </div>
-  </div>
+    
 </div>
 <br />
 <div *ngIf="!showGalleryForm">
-
-
   <div class="row galleryItemsCentered" *ngIf="galleries">
     <div class="paging">
       <button class="button left" (click)="prevPage()">
@@ -70,7 +65,13 @@
   </div>
 </div>
 
-<div class="row addingGallery" *ngIf="showGalleryForm">
-  <button class="button button-small button-back" (click)="showGalleryForm=false">Back</button>
-  <h2>Add new gallery</h2>
+<div class="row addingGallery container" *ngIf="showGalleryForm">
+  <div class="addingHeader">
+
+    <button class="button button-small button-back" (click)="showGalleryForm=false">Back</button>
+    <h2>Add new gallery</h2>
+  </div>
+  <div class="row">
+    <app-add-gallery-form style="width: 100%;" (saveGallery)="saveGallery($event)"></app-add-gallery-form>
+  </div>
 </div>

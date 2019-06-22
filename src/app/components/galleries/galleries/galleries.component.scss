@@ -16,36 +16,29 @@
 }
 
 .navigationGallery {
-    display: flex;
-    justify-content: space-between;
-    padding: 16px 40px 32px 40px;
-
-    .count {
-        display: flex;
-        align-items: center;
+    padding: 40px 0 24px 0;
         
-        .buttons {
-            padding: 0 0 0 16px;
-    
-            button {
-                margin: 0 16px 0 0;
-    
-                &:last-child {
-                    margin: 0;
-                }
+    .buttons {
+        margin: 0 0 24px 0;
+
+        span {
+            margin: 0 16px 0 0;
+        }
+
+        button {
+            margin: 0 16px 0 0;
+
+            &:last-child {
+                margin: 0;
             }
         }
     }
 
     .search {
-        display: grid;
-        justify-content: flex-end;
+        display: flex;
 
-        .row {
-            display: flex;
-            .searchDate {
-                padding: 0 16px 0 0;
-            }
+        .searchBreak {
+            margin: 0 32px 0 0;
         }
     }
 }
@@ -102,10 +95,12 @@
 }
 
 .addingGallery {
-    display: flex;
-    padding: 16px 40px 32px 40px;
-
-    .button-back {
-        margin: 0 16px 0 0;
+    .addingHeader {
+        display: flex;
+        padding-top: 32px;
+        padding-bottom: 32px;
+        .button-back {
+            margin: 0 16px 0 0;
+        }
     }
 }

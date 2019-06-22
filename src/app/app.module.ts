@@ -18,6 +18,7 @@ import { ContactComponent } from './components/contact/contact/contact.component
 import { GalleryComponent } from './components/galleries/gallery/gallery.component';
 import { from } from 'rxjs';
 import { CommentFormComponent } from './components/comments/comment-form/comment-form.component';
+import { AddGalleryFormComponent } from './components/add-gallery-form/add-gallery-form.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,8 @@ import { CommentFormComponent } from './components/comments/comment-form/comment
     DashboardComponent,
     ContactComponent,
     GalleryComponent,
-    CommentFormComponent
+    CommentFormComponent,
+    AddGalleryFormComponent
   ],
   imports: [
     BrowserModule,

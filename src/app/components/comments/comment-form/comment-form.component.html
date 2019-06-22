@@ -1,8 +1,8 @@
 <div class="commentContent">
   <div class="commentForm">
     <div class="commentHeader">
-      <h4>Pozostaw komentarz</h4>
-      <p *ngIf="commentSubmitted">Komentarz został wysłany</p>
+      <h4>Leave a comment</h4>
+      <p *ngIf="commentSubmitted">Comment was send</p>
     </div>
     <form
       id="commentForm"
@@ -20,13 +20,13 @@
             #firstName="ngModel"
             [(ngModel)]="comment.firstName"
             required
-            placeholder="Wpisz imię"
+            placeholder="Your first name"
           />
           <p
             class="form-error"
             [hidden]="firstName.valid || firstName.pristine"
           >
-            Imię jest wymagane!
+            First name is required!
           </p>
         </div>
         <div class="grid-6 lastRow">
@@ -38,13 +38,13 @@
             #lastName="ngModel"
             [(ngModel)]="comment.lastName"
             required
-            placeholder="Wpisz nazwisko"
+            placeholder="Your last name"
           />
           <p
             class="form-error"
             *ngIf="lastName.invalid && !lastName.pristine && !lastName.dirty"
           >
-            Nazwisko jest wymagane!
+            Last name is required!
           </p>
         </div>
       </div>
@@ -57,20 +57,20 @@
           #email="ngModel"
           [(ngModel)]="comment.email"
           required
-          placeholder="Wpisz email"
+          placeholder="Your email"
           pattern="^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$"
         />
         <p
           class="form-error"
           *ngIf="email.invalid && !email.pristine && !email.dirty"
         >
-          Email jest wymagany!
+          Email is required!
         </p>
         <p
           class="form-error"
           *ngIf="email.invalid && !email.pristine && email.dirty"
         >
-          Źle wpisany email!
+          Incorrect email!
         </p>
       </div>
       <div>
@@ -82,18 +82,18 @@
           #message="ngModel"
           [(ngModel)]="comment.message"
           required
-          placeholder="Wpisz komentarz..."
+          placeholder="Comment..."
         ></textarea>
         <p
           class="form-error"
           *ngIf="message.invalid && !message.pristine && !message.dirty"
         >
-          Komentarz jest wymagany!
+          Comment is required!
         </p>
       </div>
       <div>
         <button class="button button-small" [disabled]="!commentForm.valid">
-          Wyślij wiadomość
+          Send
         </button>
       </div>
     </form>
@@ -106,7 +106,7 @@
           <h5>{{ comment.lastName }}</h5>
           <p class="commentDate">{{ comment.dateCreated | polishDate }}</p>
           <button class="button button-small" (click)="removeComment(comment.commentId)">
-            Usuń komentarz
+            Remove comment
           </button>
         </div>
       </div>
