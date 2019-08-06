@@ -17,6 +17,21 @@
         [(ngModel)]="gallery.dateCreated" required>
       <p class="text-danger" [hidden]="dateCreated.valid || dateCreated.pristine">Date required!</p>
     </div>
+    <div class="input-group" *ngIf="gallery.tags">
+      <div class="tagHeader">
+        <label>Tags</label>
+        <button type="button" (click)="addTag()" class="button button-small">Add tag</button>
+      </div>
+      <div class="tags">
+        <div *ngFor="let item of gallery.tags; let i = index" class="tag">
+          <input type="text" class="input-control" name="tag{{i}}" #tag="ngModel" [(ngModel)]="item" required>
+          <button type="button" (click)="removeTag(i)" class="button">
+            <i class="fa fa-remove"></i>
+          </button>
+        </div>
+      </div>
+      <p class="text-danger" [hidden]="description.valid || description.pristine">Description required!</p>
+    </div>
     <div class="input-group">
       <label>Description</label>
       <textarea class="input-control" name="description" #description="ngModel" [(ngModel)]="gallery.description"

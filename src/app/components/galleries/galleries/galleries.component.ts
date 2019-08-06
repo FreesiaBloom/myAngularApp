@@ -61,7 +61,6 @@ export class GalleriesComponent implements OnInit {
         this.galleries = response;
         this.numberOfPages = Array(Math.ceil(this.galleries.length / this.limit)).fill(1);
       });
-
     // tslint:disable-next-line:radix
     this.currentPage = parseInt(localStorage.getItem('galleryPage')) || 0;
     this.setCurrentPage(this.currentPage);

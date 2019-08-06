@@ -1,0 +1,51 @@
+@import "../../../../assets/styles/variables";
+
+.dashboard {
+    .header {
+        display: grid;
+        justify-content: center;
+        button {
+            margin: 8px 0 0 0;
+        }
+    }
+    .addingNews {
+        display: block;
+        .addingNewsHeader {
+            display: flex;
+            align-items: center;
+            margin: 0 0 16px 0;
+            
+            button {
+                margin: 0 16px 0 0;
+            }
+        }
+    }
+    .updates {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        .updatesItem {
+            display: flex;
+            justify-content: space-between;
+            border: 1px solid $light-gray;
+            border-radius: 5px;
+            padding: 24px 32px;
+            margin: 16px 0;
+            width: 60%;
+
+            p {
+                color: $gray;
+                margin: 8px 0 0 0;
+            }
+
+            .short {
+                margin: 8px 0 0 0;
+            }
+
+            .readMore {
+                display: flex;
+                align-items: flex-end;
+            }
+        }
+    }
+}

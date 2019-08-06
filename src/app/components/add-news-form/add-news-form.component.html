@@ -1,0 +1,25 @@
+<form #newsForm="ngForm" (ngSubmit)="onSubmit()" novalidate>
+    <div class="formContent">
+      <div class="input-group">
+        <label>Title</label>
+        <input type="text" class="input-control" name="title" #title="ngModel" [(ngModel)]="news.title" required>
+        <p class="text-danger" [hidden]="title.valid || title.pristine">Title required!</p>
+      </div>
+      <div class="input-group">
+        <label>Short description</label>
+        <textarea class="input-control" name="contentShort" #contentShort="ngModel" [(ngModel)]="news.contentShort"
+          required></textarea>
+        <p class="text-danger" [hidden]="contentShort.valid || contentShort.pristine">Short description required!</p>
+      </div>
+      <div class="input-group">
+          <label>Full description</label>
+          <textarea class="input-control" name="contentFull" #contentFull="ngModel" [(ngModel)]="news.contentFull"
+            required></textarea>
+          <p class="text-danger" [hidden]="contentFull.valid || contentFull.pristine">Full description required!</p>
+        </div>
+    </div>
+    
+    <div class="row savingGallery">
+      <button class="button button-small" [disabled]="!newsForm.form.valid">Save news</button>
+    </div>
+  </form>

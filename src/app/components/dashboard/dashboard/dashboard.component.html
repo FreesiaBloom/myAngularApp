@@ -1,3 +1,33 @@
-<p>
-  dashboard works!
-</p>
+<div class="row container dashboard">
+  <div *ngIf="!showNewsForm" class="header">
+    <h1>News</h1>
+    <button class="button button-small" (click)="showNewsForm=true"><span>Add news</span></button>
+  </div>
+  <div class="row addingNews" *ngIf="showNewsForm">
+    <div class="addingNewsHeader">
+      <button class="button button-small button-back" (click)="showNewsForm=false">Back</button>
+      <h2>Add new news</h2>
+    </div>
+    <div class="row">
+      <app-add-news-form style="width: 100%;" (saveNews)="saveNews($event)"></app-add-news-form>
+    </div>
+  </div>
+  <div class="row updates" *ngIf="!showNewsForm">
+    <div class="updatesItem" *ngFor="let item of news">
+      <div>
+        <h3>
+          {{item.title}}
+        </h3>
+        <p><small>{{item.dateCreated | polishDate | uppercase}}</small></p>
+        <div class="short">
+          <span>
+            {{item.contentShort}}
+          </span>
+        </div>
+      </div>
+      <div class="readMore">
+          <button class="button button-small button-back" (click)="showNewsDetails=true">Read more</button>
+      </div>
+    </div>
+  </div>
+</div>

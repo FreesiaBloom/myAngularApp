@@ -42,9 +42,19 @@ export class AddGalleryFormComponent implements OnInit {
     this.gallery.photos.push(this.setEmptyPhoto());
   }
 
+  addTag() {
+    this.gallery.tags.push('');
+  }
+
   removePhoto(index) {
     if (this.gallery.photos.length > 0) {
       this.gallery.photos.splice(index, 1);
+    }
+  }
+
+  removeTag(index) {
+    if (this.gallery.tags.length > 0) {
+      this.gallery.tags.splice(index, 1);
     }
   }
 

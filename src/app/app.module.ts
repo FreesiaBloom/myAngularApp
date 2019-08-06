@@ -2,7 +2,6 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
- 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { PolishDatePipe } from './pipes/polish-date.pipe';
@@ -19,6 +18,8 @@ import { GalleryComponent } from './components/galleries/gallery/gallery.compone
 import { from } from 'rxjs';
 import { CommentFormComponent } from './components/comments/comment-form/comment-form.component';
 import { AddGalleryFormComponent } from './components/add-gallery-form/add-gallery-form.component';
+import { AddNewsFormComponent } from './components/add-news-form/add-news-form.component';
+import { NewsItemComponent } from './components/dashboard/news-item/news-item.component';
 
 @NgModule({
   declarations: [
@@ -35,7 +36,9 @@ import { AddGalleryFormComponent } from './components/add-gallery-form/add-galle
     ContactComponent,
     GalleryComponent,
     CommentFormComponent,
-    AddGalleryFormComponent
+    AddGalleryFormComponent,
+    AddNewsFormComponent,
+    NewsItemComponent
   ],
   imports: [
     BrowserModule,
