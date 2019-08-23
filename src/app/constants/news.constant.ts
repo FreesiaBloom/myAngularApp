@@ -1,10 +1,16 @@
 export const News = [{
+    newsId: '1',
+    title: 'Lorem ipsum dolor sit amet',
+    contentShort: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean ac felis non massa eleifend fringilla ut at lacus. Vivamus mollis tellus eu luctus rutrum.',
+    contentFull: 'Mauris non auctor erat. Curabitur lectus ex, faucibus nec ultricies et, fringilla vitae sapien. Pellentesque rhoncus nisl et orci vulputate sagittis. Ut sit amet felis quis nisi molestie semper. Praesent sit amet commodo mi, sed maximus ex. Pellentesque luctus sem ex. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Integer aliquam quam eget neque rutrum viverra. Donec dapibus nulla at metus laoreet vulputate. Sed sodales nibh sapien, viverra faucibus dui consequat mattis. Sed lorem nisl, volutpat nec augue vel, auctor suscipit ipsum. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Nam id turpis varius, commodo tortor ac, porta eros. Aenean mattis orci quis mi tempus, in gravida risus feugiat.',
+    dateCreated: '2015-08-07T00:00:00+00:00',
+},{
     newsId: '2',
     title: 'Lorem ipsum dolor sit amet',
     contentShort: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean ac felis non massa eleifend fringilla ut at lacus. Vivamus mollis tellus eu luctus rutrum.',
     contentFull: 'Mauris non auctor erat. Curabitur lectus ex, faucibus nec ultricies et, fringilla vitae sapien. Pellentesque rhoncus nisl et orci vulputate sagittis. Ut sit amet felis quis nisi molestie semper. Praesent sit amet commodo mi, sed maximus ex. Pellentesque luctus sem ex. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Integer aliquam quam eget neque rutrum viverra. Donec dapibus nulla at metus laoreet vulputate. Sed sodales nibh sapien, viverra faucibus dui consequat mattis. Sed lorem nisl, volutpat nec augue vel, auctor suscipit ipsum. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Nam id turpis varius, commodo tortor ac, porta eros. Aenean mattis orci quis mi tempus, in gravida risus feugiat.',
     dateCreated: '2015-08-07T00:00:00+00:00',
-}, {
+},{
     newsId: '3',
     title: 'Orci varius natoque penatibus',
     contentShort: 'Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec eu nibh ante. Suspendisse tincidunt sed mauris id semper.',

@@ -3,6 +3,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { News } from '../../../constants/news.constant';
 import { INews } from 'src/app/interfaces/INews';
 import { log } from 'util';
+import { removeSummaryDuplicates } from '@angular/compiler';
 
 @Component({
   selector: 'app-dashboard',
@@ -13,6 +14,7 @@ export class DashboardComponent implements OnInit {
 
   showNewsForm: boolean;
   news: INews[];
+  correctNews: INews[];
 
   httpOptions = {
     headers: new HttpHeaders({
@@ -25,10 +27,21 @@ export class DashboardComponent implements OnInit {
 
   ngOnInit() {
     this.showNewsForm = false;
+    this.news = [];
+    this.correctNews = [];
     this.http.get('http://project.usagi.pl/news',
       this.httpOptions).toPromise().then((response: INews[]) => {
         this.news = response;
+        for (let i=0; i<this.news.length; i++) {
+          if (this.news[i] !== null) {
+           this.correctNews.push(this.news[i]);
+          }
+        }
       });
+  }
+
+  klik() {
+    console.log(this.news);
   }
 
   saveNews(event) {
@@ -37,4 +50,5 @@ export class DashboardComponent implements OnInit {
       this.showNewsForm = false;
     });
   }
+
 }
