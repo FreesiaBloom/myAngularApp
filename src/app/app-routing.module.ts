@@ -5,6 +5,7 @@ import { DashboardComponent } from './components/dashboard/dashboard/dashboard.c
 import { CommonModule } from '@angular/common';
 import { ContactComponent } from './components/contact/contact/contact.component';
 import { GalleryComponent } from './components/galleries/gallery/gallery.component';
+import { NewsItemComponent } from './components/dashboard/news-item/news-item.component';
 
 const routes: Routes = [{
   path: 'galleries',
@@ -22,6 +23,9 @@ const routes: Routes = [{
   path: 'dashboard',
   redirectTo: '/dashboard',
   pathMatch: 'full'
+}, {
+  path: 'dashboard/:id',
+  component: NewsItemComponent
 }
 ];
 

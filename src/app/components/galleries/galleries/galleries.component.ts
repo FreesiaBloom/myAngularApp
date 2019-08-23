@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { IGallery } from '../../../interfaces/IGallery';
 import { Galleries } from '../../../constants/galleries.constant';
-import { Variable } from '@angular/compiler/src/render3/r3_ast';
 import { HttpClient } from '@angular/common/http';
 import { HttpHeaders } from '@angular/common/http';
 

@@ -18,7 +18,7 @@ import { GalleryComponent } from './components/galleries/gallery/gallery.compone
 import { from } from 'rxjs';
 import { CommentFormComponent } from './components/comments/comment-form/comment-form.component';
 import { AddGalleryFormComponent } from './components/add-gallery-form/add-gallery-form.component';
-import { AddNewsFormComponent } from './components/add-news-form/add-news-form.component';
+import { AddNewsFormComponent } from './components/dashboard/add-news-form/add-news-form.component';
 import { NewsItemComponent } from './components/dashboard/news-item/news-item.component';
 
 @NgModule({

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { News } from '../../../constants/news.constant';
 import { INews } from 'src/app/interfaces/INews';
 import { log } from 'util';
 
@@ -11,7 +12,6 @@ import { log } from 'util';
 export class DashboardComponent implements OnInit {
 
   showNewsForm: boolean;
-  showNewsDetails: boolean;
   news: INews[];
 
   httpOptions = {
@@ -25,7 +25,6 @@ export class DashboardComponent implements OnInit {
 
   ngOnInit() {
     this.showNewsForm = false;
-    this.showNewsDetails = false;
     this.http.get('http://project.usagi.pl/news',
       this.httpOptions).toPromise().then((response: INews[]) => {
         this.news = response;
