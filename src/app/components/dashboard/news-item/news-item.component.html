@@ -1,3 +1,10 @@
-<p>
-  news-item works!
-</p>
+<div class="newsDetails container">
+  <div class="header row">
+    <h3>{{news.title}}</h3>
+    <p><small>{{news.dateCreated | polishDate | uppercase}}</small></p>
+  </div>
+  <div class="content row">
+    <p class="short">{{news.contentShort}}</p>
+    <p>{{news.contentFull}}</p>
+  </div>
+</div>

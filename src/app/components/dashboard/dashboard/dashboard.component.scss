@@ -4,10 +4,8 @@
     .header {
         display: grid;
         justify-content: center;
-        button {
-            margin: 8px 0 0 0;
-        }
     }
+
     .addingNews {
         display: block;
         .addingNewsHeader {
@@ -25,27 +23,75 @@
         align-items: center;
         justify-content: center;
         .updatesItem {
-            display: flex;
-            justify-content: space-between;
             border: 1px solid $light-gray;
             border-radius: 5px;
-            padding: 24px 32px;
-            margin: 16px 0;
-            width: 60%;
+            padding: 16px 28px;
+            margin-top: 16px;
+            width: 80%;
 
-            p {
-                color: $gray;
-                margin: 8px 0 0 0;
-            }
-
-            .short {
-                margin: 8px 0 0 0;
-            }
-
-            .readMore {
+            .newsHeader {
                 display: flex;
-                align-items: flex-end;
+                justify-content: space-between;
+                .header h3 {
+                    padding: 0 0 8px 0;
+                }
+
+                .readMore {
+                    button:last-child {
+                        margin: 0 0 0 8px;
+                    }
+                }
             }
+
+            .shortContent {
+                padding: 16px 0 0 0;
+            }
+        }
+    }
+
+    .paging {
+        padding: 0 0 16px 0;
+
+        .button-add {
+            margin: 0 8px 0 0;
+        }
+
+        .fa {
+            color: $dark-gray;
+        }
+
+        .button {
+            &.active {
+                background-color: $brand-primary;
+                border-color: $brand-primary;
+            }
+
+            &.left, &.right {
+                line-height: unset;
+                background-color: $white;
+                border: 1px solid $gray;
+            }
+
+            &.left {
+                padding: 6px 12px 6px 10px;
+                margin: 0 8px 0 0;
+            }
+
+            &.right {
+                padding: 6px 10px 6px 12px;
+            }
+        }
+
+        span {
+            margin: 0 8px 0 0;
+
+            &:last-child {
+                margin: 0;
+            }
+        }
+
+        .pages {
+            margin: 0 0 0 8px !important;
         }
     }
 }

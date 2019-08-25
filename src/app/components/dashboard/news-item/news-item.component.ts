@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { INews } from 'src/app/interfaces/INews';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 @Component({
   selector: 'app-news-item',
@@ -8,12 +10,25 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class NewsItemComponent implements OnInit {
 
-  currentNewsId: string;
+  private newsId: string;
+  private news: INews;
 
-  constructor(private route: ActivatedRoute) { }
+  httpOptions = {
+    headers: new HttpHeaders({
+      'Content-Type': 'application/json',
+      Authorization: '74'
+    })
+  };
+
+  constructor(private route: ActivatedRoute, private http: HttpClient) { }
 
   ngOnInit() {
-    this.currentNewsId = this.route.snapshot.paramMap.get('id');
+    this.newsId = this.route.snapshot.paramMap.get('id');
+    this.http.get('http://project.usagi.pl/news/' + this.newsId,
+    this.httpOptions).toPromise().then((response: INews) => {
+      this.news = response;
+      console.log(this.news);
+    });
   }
 
 }

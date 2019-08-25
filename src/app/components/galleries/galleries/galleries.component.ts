@@ -37,19 +37,11 @@ export class GalleriesComponent implements OnInit {
     this.galleries = Galleries;
     this.searchValue = '';
     this.selectedValue = '';
-
-    this.galleries = [];
     this.http.get('http://project.usagi.pl/gallery',
       this.httpOptions).toPromise().then((response: IGallery[]) => {
         this.galleries = response;
         this.numberOfPages = Array(Math.ceil(this.galleries.length / this.limit)).fill(1);
       });
-
-
-    this.http.get('http://project.usagi.pl/gallery', this.httpOptions).toPromise().then((response: IGallery[]) => {
-      this.galleries = response;
-      this.numberOfPages = Array(Math.ceil(this.galleries.length / this.limit)).fill(1);
-    });
   }
 
   ngOnInit() {
