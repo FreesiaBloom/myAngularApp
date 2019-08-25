@@ -1,23 +1,27 @@
 @import "../../../../assets/styles/variables";
 
 .dashboard {
-    .header {
+    .headerNews {
         display: grid;
         justify-content: center;
-    }
+        padding: 0 0 40px 0;
 
-    .addingNews {
-        display: block;
-        .addingNewsHeader {
-            display: flex;
-            align-items: center;
-            margin: 0 0 16px 0;
-            
-            button {
-                margin: 0 16px 0 0;
-            }
+        h1, p {
+            text-align: center;
+        }
+
+        p {
+            color: $dark-gray;
+            width: 600px;
         }
     }
+
+    .button.button-small {
+        i {
+            margin: 0 4px 0 0 !important;
+        }
+    }
+
     .updates {
         display: flex;
         align-items: center;
@@ -50,11 +54,10 @@
     }
 
     .paging {
-        padding: 0 0 16px 0;
-
-        .button-add {
-            margin: 0 8px 0 0;
-        }
+        padding: 0 0 24px 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
 
         .fa {
             color: $dark-gray;

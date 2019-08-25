@@ -1,26 +1,23 @@
 @import "../../../../assets/styles/variables";
 
 .header {
-    padding-top: 16px;
+    padding: 0 0 40px 0;
+    text-align: center;
+    display: grid;
+    justify-content: center;
 
-    div {
-        text-align: center;
-        display: grid;
-        justify-content: center;
-
-        p {
-            color: $dark-gray;
-            width: 600px;
-        }
+    p {
+        color: $dark-gray;
+        width: 600px;
     }
 }
 
 .navigationGallery {
-    padding: 40px 0 24px 0;
+    padding: 0 0 24px 0;
+    display: flex;
+    justify-content: space-between;
         
     .buttons {
-        margin: 0 0 24px 0;
-
         span {
             margin: 0 16px 0 0;
         }
@@ -38,7 +35,7 @@
         display: flex;
 
         .searchBreak {
-            margin: 0 32px 0 0;
+            margin: 0 16px 0 0;
         }
     }
 }
@@ -52,13 +49,15 @@
     }
 
     .paging {
-        padding: 0 0 16px 0;
-
-        .fa {
-            color: $dark-gray;
-        }
-
+        padding: 0 0 24px 0;
         .button {
+            i {
+                margin: 0 4px 0 0 !important;
+            }
+            .fa {
+                color: $dark-gray;
+            }
+            
             &.active {
                 background-color: $brand-primary;
                 border-color: $brand-primary;

@@ -22,7 +22,6 @@ export class AddNewsFormComponent implements OnInit {
   setEmptyNews() {
     const newDate = new Date();
     return {
-      newsId: '',
       title: '',
       contentShort: '',
       contentFull: '',

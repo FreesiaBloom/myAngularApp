@@ -1,10 +1,12 @@
-<div class="row container dashboard">
-  <div *ngIf="!showNewsForm" class="row header">
-    <h1>News</h1>
-  </div>
+<div class="row dashboard" [ngClass]="{'container': !showNewsForm}">
   <div *ngIf="!showNewsForm">
+    <div class="row headerNews">
+      <h1>News</h1>
+      <br />
+      <p>{{ description }}</p>
+    </div>
+    <button class="button button-small" (click)="showNewsForm=true"><i class="fa fa-plus"></i> Add news</button>
     <div class="paging" *ngIf="correctNews">
-      <button class="button button-small button-add" (click)="showNewsForm=true"><span>Add news</span></button>
       <button class="button left" (click)="prevPage()">
         <span class="fa fa-caret-left"></span>
       </button>
@@ -17,35 +19,37 @@
       </button>
       <span class="pages">Strona: {{currentPage+1}} z {{numberOfPages?.length}}</span>
     </div>
-  </div>
-  <div class="row addingNews" *ngIf="showNewsForm">
-    <div class="addingNewsHeader">
-      <button class="button button-small button-back" (click)="showNewsForm=false">Back</button>
-      <h2>Add new news</h2>
-    </div>
-    <div class="row">
-      <app-add-news-form style="width: 100%;" (saveNews)="saveNews($event)"></app-add-news-form>
-    </div>
-  </div>
-  <div class="row updates" *ngIf="!showNewsForm">
-    <div class="updatesItem" *ngFor="let item of correctNews | slice:start:end;">
-      <div class="row newsHeader">
-        <div class="header">
-          <h3>
-            {{item.title}}
-          </h3>
-          <p><small>{{item.dateCreated | polishDate | uppercase}}</small></p>
+    <div class="row updates">
+      <div class="updatesItem" *ngFor="let item of correctNews | slice:start:end;">
+        <div class="row newsHeader">
+          <div class="header">
+            <h3>
+              {{item.title}}
+            </h3>
+            <p><small>{{item.dateCreated | polishDate | uppercase}}</small></p>
+          </div>
+          <div class="readMore">
+            <button class="button button-small button-back" (click)="removeNews(item.newsId)">Delete</button>
+            <button class="button button-small button-back" routerLink="/dashboard/{{item.newsId}}">Read more</button>
+          </div>
         </div>
-        <div class="readMore">
-          <button class="button button-small button-back" (click)="removeNews(item.newsId)">Delete</button>
-          <button class="button button-small button-back" routerLink="/dashboard/{{item.newsId}}">Read more</button>
+        <div class="shortContent row">
+          <p>
+            {{item.contentShort}}
+          </p>
         </div>
       </div>
-      <div class="shortContent row">
-        <p>
-          {{item.contentShort}}
-        </p>
-      </div>
     </div>
+  </div>
+</div>
+<div class="row container dashboard addingNews" [ngClass]="{'container': showNewsForm}" *ngIf="showNewsForm">
+  <div class="row headerNews">
+    <h1>Add new news</h1>
+    <br />
+    <p>{{ description }}</p>
+  </div>
+  <button class="button button-small" (click)="showNewsForm=false">Back</button>
+  <div class="row">
+    <app-add-news-form style="width: 100%;" (saveNews)="saveNews($event)"></app-add-news-form>
   </div>
 </div>

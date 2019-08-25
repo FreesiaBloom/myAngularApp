@@ -1,7 +1,13 @@
 @import "../../../../assets/styles/variables";
 
-.formContent, .formPhoto {
-    width: 100%;
-    display: block;
+.formContent {
+    .input-group {
+        width: 100%;
+    }
 }
 
+.savingNews {
+    margin: 0 0 16px 0;
+    display: flex;
+    justify-content: center;
+}

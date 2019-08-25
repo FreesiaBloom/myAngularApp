@@ -20,6 +20,7 @@ export class DashboardComponent implements OnInit {
   currentPage: number;
   start: number;
   end: number;
+  description: string;
 
   httpOptions = {
     headers: new HttpHeaders({
@@ -29,6 +30,7 @@ export class DashboardComponent implements OnInit {
   };
 
   constructor(private http: HttpClient) {
+    this.description = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin vel orci eleifend, egestas massa ut, accumsan dui. Duis vel orci at neque accumsan porttitor.';
     this.http.get('http://project.usagi.pl/news',
       this.httpOptions).toPromise().then((response: INews[]) => {
         this.news = response;
@@ -60,19 +62,34 @@ export class DashboardComponent implements OnInit {
   }
 
   removeNews(newsId) {
-    const index = this.news.findIndex((newsNew: INews) => newsNew.newsId === newsId);
-    this.http.post('http://project.usagi.pl/gallery/delete/' + newsId, this.news, this.httpOptions).toPromise().then((response) => {
-      this.news.splice(index, 1);
+    const index = this.correctNews.findIndex((newsNew: INews) => newsNew.newsId === newsId);
+    this.http.post('http://project.usagi.pl/news/delete/' + newsId, this.correctNews, this.httpOptions).toPromise().then((response) => {
+      this.correctNews.splice(index, 1);
       this.numberOfPages = Array(Math.ceil(this.correctNews.length / this.limit)).fill(1);
       console.log('success', response);
+      this.updateNews();
     }, (errResponse) => {
       console.log('error', errResponse);
     });
   }
 
+  updateNews() {
+    this.numberOfPages = 0;
+    this.http.get('http://project.usagi.pl/news',
+      this.httpOptions).toPromise().then((response: INews[]) => {
+        this.news = response;
+        for (let i=0; i<this.news.length; i++) {
+          if (this.news[i] !== null) {
+           this.correctNews.push(this.news[i]);
+          }
+        }
+        this.numberOfPages = Array(Math.ceil(this.correctNews.length / this.limit)).fill(1);
+      });
+  }
+
   saveNews(event) {
     this.http.post('http://project.usagi.pl/news', event, this.httpOptions).toPromise().then((response: any) => {
-      this.news.push(response);
+      this.correctNews.push(response);
       this.showNewsForm = false;
     });
   }
