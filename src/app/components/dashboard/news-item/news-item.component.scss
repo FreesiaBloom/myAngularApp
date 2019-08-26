@@ -3,10 +3,17 @@
 .newsDetails {
     padding: 10px 100px 32px 100px;
 
-    .header {
+    .back {
+        margin-bottom: 8px;
+        .backButton {
+            margin: 0 8px 0 0;
+        }
+    }
+
+    .headerDetails {
         display: block;
 
-        h3 {
+        h1 {
             padding: 0 0 8px 0;
         }
     }

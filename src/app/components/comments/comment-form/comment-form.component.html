@@ -1,97 +1,42 @@
-<div class="commentContent">
-  <div class="commentForm">
-    <div class="commentHeader">
-      <h4>Leave a comment</h4>
-      <p *ngIf="commentSubmitted">Comment was send</p>
-    </div>
-    <form
-      id="commentForm"
-      #commentForm="ngForm"
-      (ngSubmit)="onSubmit(commentForm)"
-      novalidate
-    >
-      <div class="nameRow row">
-        <div class="grid-6 firstRow">
-          <input
-            id="firstName"
-            type="text"
-            class="firstInput input-control"
-            name="firstName"
-            #firstName="ngModel"
-            [(ngModel)]="comment.firstName"
-            required
-            placeholder="Your first name"
-          />
-          <p
-            class="form-error"
-            [hidden]="firstName.valid || firstName.pristine"
-          >
-            First name is required!
-          </p>
-        </div>
-        <div class="grid-6 lastRow">
-          <input
-            id="lastName"
-            type="text"
-            class="lastInput input-control"
-            name="lastName"
-            #lastName="ngModel"
-            [(ngModel)]="comment.lastName"
-            required
-            placeholder="Your last name"
-          />
-          <p
-            class="form-error"
-            *ngIf="lastName.invalid && !lastName.pristine && !lastName.dirty"
-          >
-            Last name is required!
-          </p>
-        </div>
+<div class="commentContent container">
+  <div class="commentHeader row">
+    <h4>Leave a comment</h4>
+    <p *ngIf="commentSubmitted">Comment was send</p>
+  </div>
+  <div class="row">
+    <form class="formContent" id="commentForm" #commentForm="ngForm" (ngSubmit)="onSubmit(commentForm)" novalidate>
+      <div class="row">
+        <input id="firstName" type="text" class="input-control" name="firstName" #firstName="ngModel"
+          [(ngModel)]="comment.firstName" required placeholder="Your first name" />
+        <p class="form-error" [hidden]="firstName.valid || firstName.pristine">
+          First name is required!
+        </p>
       </div>
-      <div>
-        <input
-          id="email"
-          type="text"
-          class="input-control"
-          name="email"
-          #email="ngModel"
-          [(ngModel)]="comment.email"
-          required
-          placeholder="Your email"
-          pattern="^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$"
-        />
-        <p
-          class="form-error"
-          *ngIf="email.invalid && !email.pristine && !email.dirty"
-        >
+      <div class="row">
+        <input id="lastName" type="text" class="input-control" name="lastName" #lastName="ngModel"
+          [(ngModel)]="comment.lastName" required placeholder="Your last name" />
+        <p class="form-error" *ngIf="lastName.invalid && !lastName.pristine && !lastName.dirty">
+          Last name is required!
+        </p>
+      </div>
+      <div class="row">
+        <input id="email" type="text" class="input-control" name="email" #email="ngModel" [(ngModel)]="comment.email"
+          required placeholder="Your email" pattern="^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$" />
+        <p class="form-error" *ngIf="email.invalid && !email.pristine && !email.dirty">
           Email is required!
         </p>
-        <p
-          class="form-error"
-          *ngIf="email.invalid && !email.pristine && email.dirty"
-        >
+        <p class="form-error" *ngIf="email.invalid && !email.pristine && email.dirty">
           Incorrect email!
         </p>
       </div>
-      <div>
-        <textarea
-          id="message"
-          type="textarea"
-          class="input-control"
-          name="message"
-          #message="ngModel"
-          [(ngModel)]="comment.message"
-          required
-          placeholder="Comment..."
-        ></textarea>
-        <p
-          class="form-error"
-          *ngIf="message.invalid && !message.pristine && !message.dirty"
-        >
+      <div class="row">
+        <textarea id="message" type="textarea" class="input-control" name="message" #message="ngModel"
+          [(ngModel)]="comment.message" required placeholder="Comment..."></textarea>
+        <p class="form-error" *ngIf="message.invalid && !message.pristine && !message.dirty">
           Comment is required!
         </p>
       </div>
-      <div>
+      <div class="row buttonRow">
         <button class="button button-small" [disabled]="!commentForm.valid">
           Send
         </button>
@@ -100,15 +45,12 @@
   </div>
   <div class="commentList">
     <div class="commentItem" *ngFor="let comment of commentsList">
-      <div class="commentItemHeader">
-        <div class="commentName">
-          <h5>{{ comment.firstName }}</h5>
-          <h5>{{ comment.lastName }}</h5>
-          <p class="commentDate">{{ comment.dateCreated | polishDate }}</p>
-          <button class="button button-small" (click)="removeComment(comment.commentId)">
-            Remove comment
-          </button>
-        </div>
+      <div class="commentName">
+        <h5>{{ comment.firstName }} {{ comment.lastName }}</h5>
+        <p class="commentDate">{{ comment.dateCreated | polishDate }}</p>
+        <button class="button button-small" (click)="removeComment(comment.commentId)">
+          Remove comment
+        </button>
       </div>
       <p>{{ comment.message }}</p>
     </div>

@@ -1,4 +1,4 @@
-<div class="container" [ngClass]="{'container': !showGalleryForm}">
+<div [ngClass]="{'container': !showGalleryForm}">
   <div class="row header" *ngIf="!showGalleryForm">
     <h1>
       {{ title }}
@@ -6,7 +6,6 @@
     <br />
     <p>{{ description }}</p>
   </div>
-
   <div class="navigationGallery" *ngIf="galleries && !showGalleryForm">
     <div class="buttons">
       <button class="button button-small" (click)="showGalleryForm=true"><i class="fa fa-plus"></i> Add new
@@ -17,7 +16,7 @@
       <button *ngIf="galleries.length" class="button button-small" (click)="removeGalleries()">
         Remove galleries
       </button>
-      <span>Ilosć prac {{ galleries.length }}</span>
+      <span>Artworks count: {{ galleries.length }}</span>
     </div>
     <div class="search" *ngIf="galleries.length">
       <div class="searchBreak">
@@ -63,14 +62,14 @@
   </div>
 </div>
 <div class="row addingGallery" [ngClass]="{'container': showGalleryForm}" *ngIf="showGalleryForm">
-  <div class="row header">
+  <button class="button button-small" (click)="showGalleryForm=false">Back</button>
+  <div class="row headerNews">
     <h1>
       Add new gallery
     </h1>
     <br />
     <p>{{ description }}</p>
   </div>
-  <button class="button button-small button-back" (click)="showGalleryForm=false">Back</button>
   <div class="row">
     <app-add-gallery-form style="width: 100%;" (saveGallery)="saveGallery($event)"></app-add-gallery-form>
   </div>

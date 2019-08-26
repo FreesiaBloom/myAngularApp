@@ -1,5 +1,5 @@
 <form class="container addGallery" #galleryForm="ngForm" (ngSubmit)="onSubmit()" novalidate>
-  <div class="grid-16 row formContent">
+  <div class="row formContent">
     <div class="input-group">
       <label>Title</label>
       <input type="text" class="input-control" name="title" #title="ngModel" [(ngModel)]="gallery.title" required>

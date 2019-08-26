@@ -12,6 +12,7 @@ export class NewsItemComponent implements OnInit {
 
   private newsId: string;
   private news: INews;
+  showNewsForm: boolean
 
   httpOptions = {
     headers: new HttpHeaders({
@@ -23,12 +24,18 @@ export class NewsItemComponent implements OnInit {
   constructor(private route: ActivatedRoute, private http: HttpClient) { }
 
   ngOnInit() {
+    this.showNewsForm = false;
     this.newsId = this.route.snapshot.paramMap.get('id');
     this.http.get('http://project.usagi.pl/news/' + this.newsId,
     this.httpOptions).toPromise().then((response: INews) => {
       this.news = response;
-      console.log(this.news);
     });
   }
 
+  saveNews(event) {
+    this.http.post('http://project.usagi.pl/news/' + this.newsId, event, this.httpOptions).toPromise().then((response: INews) => {
+      this.news = response;
+      this.showNewsForm = false;
+    });
+  }
 }

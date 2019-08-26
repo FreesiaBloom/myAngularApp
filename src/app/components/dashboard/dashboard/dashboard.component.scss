@@ -16,9 +16,14 @@
         }
     }
 
-    .button.button-small {
-        i {
-            margin: 0 4px 0 0 !important;
+    .navigationDashboard {
+        display: flex;
+        align-items: center;
+        .button.button-small {
+            margin: 0 8px 0 0;
+            i {
+                margin: 0 4px 0 0 !important;
+            }
         }
     }
 

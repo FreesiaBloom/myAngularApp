@@ -1,59 +1,27 @@
 @import "../../../../assets/styles/variables";
 
-.commentForm {
-    width: 60%;
-    margin: 0 0 32px 0;
+.commentContent {
+  width: 60%;
+
   .commentHeader {
     padding: 0 0 16px 0;
-    display: flex;
-    align-items: baseline;
-    h4 {
-      padding-right: 8px;
-    }
   }
 
-  form {
-    .input-control {
-      margin-bottom: 16px;
-    }
-    .nameRow {
-      display: flex;
+  .formContent {
+    width: 100%;
 
-      .firstRow,
-      .lastRow {
-        width: 100%;
+    .row {
+      padding: 0 0 16px 0;
+
+      textarea {
+        min-height: 32px;
+        max-height: 160px;
       }
 
-      .firstRow {
-        margin-right: 8px;
-      }
-    }
-    .form-error {
-      margin-bottom: 16px;
-    }
-  }
-}
-
-.commentList {
-  .commentItem {
-    padding: 24px 16px;
-    border-top: 1px solid $lighter-gray;
-    .commentItemHeader {
-      margin: 0 0 16px;
-      .commentName {
+      &.buttonRow{
         display: flex;
-        align-items: center;
-        padding: 0 0 8px 0;
-        h5 {
-          padding-right: 8px;
-        }
-        .commentDate {
-          padding-right: 8px;
-          font-size: 14px;
-          color: $light-gray;
-        }
+        justify-content: center;
       }
-
     }
   }
 }

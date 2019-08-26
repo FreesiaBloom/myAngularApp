@@ -57,8 +57,14 @@ export class DashboardComponent implements OnInit {
         }
         this.numberOfPages = Array(Math.ceil(this.correctNews.length / this.limit)).fill(1);
       });
-    this.currentPage = parseInt(localStorage.getItem('galleryPage')) || 0;
+    this.currentPage = parseInt(localStorage.getItem('newsPage')) || 0;
     this.setCurrentPage(this.currentPage);
+  }
+
+  get sortByDate() {
+    return this.correctNews.sort((a, b) => {
+      return <any>new Date(b.dateCreated) - <any>new Date(a.dateCreated);
+    });
   }
 
   removeNews(newsId) {
@@ -67,24 +73,9 @@ export class DashboardComponent implements OnInit {
       this.correctNews.splice(index, 1);
       this.numberOfPages = Array(Math.ceil(this.correctNews.length / this.limit)).fill(1);
       console.log('success', response);
-      this.updateNews();
     }, (errResponse) => {
       console.log('error', errResponse);
     });
-  }
-
-  updateNews() {
-    this.numberOfPages = 0;
-    this.http.get('http://project.usagi.pl/news',
-      this.httpOptions).toPromise().then((response: INews[]) => {
-        this.news = response;
-        for (let i=0; i<this.news.length; i++) {
-          if (this.news[i] !== null) {
-           this.correctNews.push(this.news[i]);
-          }
-        }
-        this.numberOfPages = Array(Math.ceil(this.correctNews.length / this.limit)).fill(1);
-      });
   }
 
   saveNews(event) {
@@ -100,7 +91,7 @@ export class DashboardComponent implements OnInit {
     this.start = this.currentPage * this.limit;
     this.end = this.start + 3;
 
-    localStorage.setItem('galleryPage', this.currentPage.toString());
+    localStorage.setItem('newsPage', this.currentPage.toString());
   }
 
   prevPage() {

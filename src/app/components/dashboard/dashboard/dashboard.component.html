@@ -5,7 +5,10 @@
       <br />
       <p>{{ description }}</p>
     </div>
-    <button class="button button-small" (click)="showNewsForm=true"><i class="fa fa-plus"></i> Add news</button>
+    <div class="row navigationDashboard">
+      <button class="button button-small" (click)="showNewsForm=true"><i class="fa fa-plus"></i> Add news</button>
+      <span>Updates count: {{ correctNews.length }}</span>
+    </div>
     <div class="paging" *ngIf="correctNews">
       <button class="button left" (click)="prevPage()">
         <span class="fa fa-caret-left"></span>
@@ -20,7 +23,7 @@
       <span class="pages">Strona: {{currentPage+1}} z {{numberOfPages?.length}}</span>
     </div>
     <div class="row updates">
-      <div class="updatesItem" *ngFor="let item of correctNews | slice:start:end;">
+      <div class="updatesItem" *ngFor="let item of sortByDate | slice:start:end;">
         <div class="row newsHeader">
           <div class="header">
             <h3>
@@ -42,13 +45,13 @@
     </div>
   </div>
 </div>
-<div class="row container dashboard addingNews" [ngClass]="{'container': showNewsForm}" *ngIf="showNewsForm">
+<div class="row dashboard addingNews" [ngClass]="{'container': showNewsForm}" *ngIf="showNewsForm">
+  <button class="button button-small" (click)="showNewsForm=false">Back</button>
   <div class="row headerNews">
     <h1>Add new news</h1>
     <br />
     <p>{{ description }}</p>
   </div>
-  <button class="button button-small" (click)="showNewsForm=false">Back</button>
   <div class="row">
     <app-add-news-form style="width: 100%;" (saveNews)="saveNews($event)"></app-add-news-form>
   </div>

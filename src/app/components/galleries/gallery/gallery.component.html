@@ -32,13 +32,13 @@
     </div>
   </div>
 </div>
-<div class="row content" *ngIf="gallery && !showGalleryForm">
+<div class="row" [ngClass]="{'container': !showGalleryForm}" *ngIf="gallery && !showGalleryForm">
   <app-comment-form class="row content commentSection" [galleryId]="gallery.galleryId"></app-comment-form>
 </div>
 
-<div class="row addingGallery container" *ngIf="showGalleryForm">
+<div class="row addingGallery" [ngClass]="{'container': showGalleryForm}" *ngIf="showGalleryForm">
+  <button class="button button-small button-back" (click)="showGalleryForm=false">Back</button>
   <div class="addingHeader">
-    <button class="button button-small button-back" (click)="showGalleryForm=false">Back</button>
     <h2>Edit gallery</h2>
   </div>
   <div class="row">
