@@ -1,4 +1,4 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Output, Input, EventEmitter } from '@angular/core';
 import { INews } from 'src/app/interfaces/INews';
 import * as uuid from 'uuid/v4';
 import { Logs } from 'selenium-webdriver';
@@ -11,7 +11,7 @@ import { Logs } from 'selenium-webdriver';
 export class AddNewsFormComponent implements OnInit {
 
   @Output() saveNews: EventEmitter<INews> = new EventEmitter<INews>();
-  news: INews;
+  @Input() news?: INews;
 
   constructor() { }
 
@@ -22,7 +22,6 @@ export class AddNewsFormComponent implements OnInit {
   setEmptyNews() {
     const newDate = new Date();
     return {
-      newsId: '',
       title: '',
       contentShort: '',
       contentFull: '',

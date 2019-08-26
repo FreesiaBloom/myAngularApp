@@ -1,5 +1,5 @@
-<form #newsForm="ngForm" (ngSubmit)="onSubmit()" novalidate>
-    <div class="formContent">
+<form class="container" #newsForm="ngForm" (ngSubmit)="onSubmit()" novalidate>
+    <div class="row formContent">
       <div class="input-group">
         <label>Title</label>
         <input type="text" class="input-control" name="title" #title="ngModel" [(ngModel)]="news.title" required>
@@ -19,7 +19,7 @@
         </div>
     </div>
     
-    <div class="row savingGallery">
+    <div class="row savingNews">
       <button class="button button-small" [disabled]="!newsForm.form.valid">Save news</button>
     </div>
   </form>

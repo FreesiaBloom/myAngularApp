@@ -20,7 +20,6 @@ export class AddGalleryFormComponent implements OnInit {
 
   setEmptyGallery() {
     return {
-      galleryId: '',
       title: '',
       thumbUrl: '',
       dateCreated: '',

@@ -1,5 +1,5 @@
 <select name="searchValue" id="searchDate" [(ngModel)]="value" (change)="onChange()">
-    <option value="" disabled selected>Wyszukaj daty</option>
+    <option value="" disabled selected>Search by date</option>
     <option *ngFor="let item of galleries" [ngValue]="item.dateCreated">
       {{item.dateCreated | polishDate }}
     </option>

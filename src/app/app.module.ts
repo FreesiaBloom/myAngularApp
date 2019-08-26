@@ -17,8 +17,8 @@ import { ContactComponent } from './components/contact/contact/contact.component
 import { GalleryComponent } from './components/galleries/gallery/gallery.component';
 import { from } from 'rxjs';
 import { CommentFormComponent } from './components/comments/comment-form/comment-form.component';
-import { AddGalleryFormComponent } from './components/add-gallery-form/add-gallery-form.component';
-import { AddNewsFormComponent } from './components/add-news-form/add-news-form.component';
+import { AddGalleryFormComponent } from './components/galleries/add-gallery-form/add-gallery-form.component';
+import { AddNewsFormComponent } from './components/dashboard/add-news-form/add-news-form.component';
 import { NewsItemComponent } from './components/dashboard/news-item/news-item.component';
 
 @NgModule({

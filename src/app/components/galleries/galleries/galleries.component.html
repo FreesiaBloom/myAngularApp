@@ -1,24 +1,22 @@
-<div class="row header">
-  <div class="grid-centered">
+<div [ngClass]="{'container': !showGalleryForm}">
+  <div class="row header" *ngIf="!showGalleryForm">
     <h1>
       {{ title }}
     </h1>
     <br />
     <p>{{ description }}</p>
   </div>
-</div>
-
-<div class="navigationGallery container" *ngIf="galleries && !showGalleryForm">
-
+  <div class="navigationGallery" *ngIf="galleries && !showGalleryForm">
     <div class="buttons">
-      <span>Ilosć prac {{ galleries.length }}</span>
+      <button class="button button-small" (click)="showGalleryForm=true"><i class="fa fa-plus"></i> Add new
+        gallery</button>
       <button class="button button-small" (click)="exportGalleries()">
         Export galleries
       </button>
       <button *ngIf="galleries.length" class="button button-small" (click)="removeGalleries()">
         Remove galleries
       </button>
-      <button class="button button-small" (click)="showGalleryForm=true"><i class="fa fa-plus"></i></button>
+      <span>Artworks count: {{ galleries.length }}</span>
     </div>
     <div class="search" *ngIf="galleries.length">
       <div class="searchBreak">
@@ -28,48 +26,49 @@
         <app-gallery-select (selectValue)="setSelectValue($event)"></app-gallery-select>
       </div>
     </div>
-    
-</div>
-<br />
-<div *ngIf="!showGalleryForm">
-  <div class="row galleryItemsCentered" *ngIf="galleries">
-    <div class="paging">
-      <button class="button left" (click)="prevPage()">
-        <span class="fa fa-caret-left"></span>
-      </button>
-      <span *ngFor="let item of numberOfPages; let i = index">
-        <button class="button button-small" [ngClass]="{'active': i === currentPage}"
-          (click)="setCurrentPage(i)">{{i + 1}}</button>
-      </span>
-      <button class="button right" (click)="nextPage()">
-        <span class="fa fa-caret-right"></span>
-      </button>
-      <span class="pages">Strona: {{currentPage+1}} z {{numberOfPages?.length}}</span>
-    </div>
   </div>
 
-  <br />
-  <div class="row displayGallery" *ngIf="galleries && galleries.length">
-    <div class="galleryItemsCentered">
+  <div *ngIf="!showGalleryForm">
+    <div class="row galleryItemsCentered" *ngIf="galleries">
+      <div class="paging">
+        <button class="button left" (click)="prevPage()">
+          <span class="fa fa-caret-left"></span>
+        </button>
+        <span *ngFor="let item of numberOfPages; let i = index">
+          <button class="button button-small" [ngClass]="{'active': i === currentPage}"
+            (click)="setCurrentPage(i)">{{i + 1}}</button>
+        </span>
+        <button class="button right" (click)="nextPage()">
+          <span class="fa fa-caret-right"></span>
+        </button>
+        <span class="pages">Strona: {{currentPage+1}} z {{numberOfPages?.length}}</span>
+      </div>
+    </div>
 
-      <app-gallery-item *ngFor="
-      let item of galleries
-      | searchGalleries: searchValue
-      | selectedDate: selectedValue
-      | slice:start:end;
-      trackBy: item?.galleryId
-      " [gallery]="item" (deleteGallery)="removeGallery($event)" (deleteGallery)="removeGallery($event)"
-        class="grid-4 grid-centered imgBox">
-      </app-gallery-item>
+    <div class="row displayGallery" *ngIf="galleries && galleries.length">
+      <div class="galleryItemsCentered">
+
+        <app-gallery-item *ngFor="
+        let item of galleries
+        | searchGalleries: searchValue
+        | selectedDate: selectedValue
+        | slice:start:end;
+        trackBy: item?.galleryId
+        " [gallery]="item" (deleteGallery)="removeGallery($event)" (deleteGallery)="removeGallery($event)"
+          class="grid-4 grid-centered imgBox">
+        </app-gallery-item>
+      </div>
     </div>
   </div>
 </div>
-
-<div class="row addingGallery container" *ngIf="showGalleryForm">
-  <div class="addingHeader">
-
-    <button class="button button-small button-back" (click)="showGalleryForm=false">Back</button>
-    <h2>Add new gallery</h2>
+<div class="row addingGallery" [ngClass]="{'container': showGalleryForm}" *ngIf="showGalleryForm">
+  <button class="button button-small" (click)="showGalleryForm=false">Back</button>
+  <div class="row headerNews">
+    <h1>
+      Add new gallery
+    </h1>
+    <br />
+    <p>{{ description }}</p>
   </div>
   <div class="row">
     <app-add-gallery-form style="width: 100%;" (saveGallery)="saveGallery($event)"></app-add-gallery-form>
