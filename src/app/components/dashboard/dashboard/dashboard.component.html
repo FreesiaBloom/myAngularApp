@@ -6,7 +6,7 @@
       <p>{{ description }}</p>
     </div>
     <div class="row navigationDashboard">
-      <button class="button button-small" (click)="showNewsForm=true"><i class="fa fa-plus"></i> Add news</button>
+      <button class="button button-base" (click)="showNewsForm=true"><i class="fa fa-plus"></i> Add news</button>
       <span>Updates count: {{ correctNews.length }}</span>
     </div>
     <div class="paging" *ngIf="correctNews">
@@ -14,7 +14,7 @@
         <span class="fa fa-caret-left"></span>
       </button>
       <span *ngFor="let item of numberOfPages; let i = index">
-        <button class="button button-small" [ngClass]="{'active': i === currentPage}"
+        <button class="button button-base" [ngClass]="{'active': i === currentPage}"
           (click)="setCurrentPage(i)">{{i + 1}}</button>
       </span>
       <button class="button right" (click)="nextPage()">
@@ -32,8 +32,8 @@
             <p><small>{{item.dateCreated | polishDate | uppercase}}</small></p>
           </div>
           <div class="readMore">
-            <button class="button button-small button-back" (click)="removeNews(item.newsId)">Delete</button>
-            <button class="button button-small button-back" routerLink="/dashboard/{{item.newsId}}">Read more</button>
+            <button class="button button-base button-back" (click)="removeNews(item.newsId)">Delete</button>
+            <button class="button button-base button-back" routerLink="/dashboard/{{item.newsId}}">Read more</button>
           </div>
         </div>
         <div class="shortContent row">
@@ -46,7 +46,7 @@
   </div>
 </div>
 <div class="row dashboard addingNews" [ngClass]="{'container': showNewsForm}" *ngIf="showNewsForm">
-  <button class="button button-small" (click)="showNewsForm=false">Back</button>
+  <button class="button button-base" (click)="showNewsForm=false">Back</button>
   <div class="row headerNews">
     <h1>Add new news</h1>
     <br />

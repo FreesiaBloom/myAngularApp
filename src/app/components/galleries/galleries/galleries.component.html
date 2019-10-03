@@ -8,12 +8,12 @@
   </div>
   <div class="navigationGallery" *ngIf="galleries && !showGalleryForm">
     <div class="buttons">
-      <button class="button button-small" (click)="showGalleryForm=true"><i class="fa fa-plus"></i> Add new
+      <button class="button button-base" (click)="showGalleryForm=true"><i class="fa fa-plus"></i> Add new
         gallery</button>
-      <button class="button button-small" (click)="exportGalleries()">
+      <button class="button button-base" (click)="exportGalleries()">
         Export galleries
       </button>
-      <button *ngIf="galleries.length" class="button button-small" (click)="removeGalleries()">
+      <button *ngIf="galleries.length" class="button button-base" (click)="removeGalleries()">
         Remove galleries
       </button>
       <span>Artworks count: {{ galleries.length }}</span>
@@ -35,7 +35,7 @@
           <span class="fa fa-caret-left"></span>
         </button>
         <span *ngFor="let item of numberOfPages; let i = index">
-          <button class="button button-small" [ngClass]="{'active': i === currentPage}"
+          <button class="button button-base" [ngClass]="{'active': i === currentPage}"
             (click)="setCurrentPage(i)">{{i + 1}}</button>
         </span>
         <button class="button right" (click)="nextPage()">
@@ -55,14 +55,14 @@
         | slice:start:end;
         trackBy: item?.galleryId
         " [gallery]="item" (deleteGallery)="removeGallery($event)" (deleteGallery)="removeGallery($event)"
-          class="grid-4 grid-centered imgBox">
+          class="col-4 centered imgBox">
         </app-gallery-item>
       </div>
     </div>
   </div>
 </div>
 <div class="row addingGallery" [ngClass]="{'container': showGalleryForm}" *ngIf="showGalleryForm">
-  <button class="button button-small" (click)="showGalleryForm=false">Back</button>
+  <button class="button button-base" (click)="showGalleryForm=false">Back</button>
   <div class="row headerNews">
     <h1>
       Add new gallery

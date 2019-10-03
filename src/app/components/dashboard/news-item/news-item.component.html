@@ -1,7 +1,7 @@
 <div class="newsDetails" [ngClass]="{'container': !showNewsForm}" *ngIf="!showNewsForm">
   <div class="row back">
-    <button class="button button-small backButton" routerLink="/dashboard">Back</button>
-    <button class="button button-small" (click)="showNewsForm=true">Edit</button>
+    <button class="button button-base backButton" routerLink="/dashboard">Back</button>
+    <button class="button button-base" (click)="showNewsForm=true">Edit</button>
   </div>
   <div class="headerDetails row">
     <h1>{{news.title}}</h1>
@@ -15,7 +15,7 @@
   </div>
 </div>
 <div class="row newsDetails addingNews" [ngClass]="{'container': showNewsForm}" *ngIf="showNewsForm">
-  <button class="button button-small" (click)="showNewsForm=false">Back</button>
+  <button class="button button-base" (click)="showNewsForm=false">Back</button>
   <div class="row headerNews">
     <h1>Edit news</h1>
     <br />

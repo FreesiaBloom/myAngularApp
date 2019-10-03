@@ -37,7 +37,7 @@
         </p>
       </div>
       <div class="row buttonRow">
-        <button class="button button-small" [disabled]="!commentForm.valid">
+        <button class="button button-base" [disabled]="!commentForm.valid">
           Send
         </button>
       </div>
@@ -48,7 +48,7 @@
       <div class="commentName">
         <h5>{{ comment.firstName }} {{ comment.lastName }}</h5>
         <p class="commentDate">{{ comment.dateCreated | polishDate }}</p>
-        <button class="button button-small" (click)="removeComment(comment.commentId)">
+        <button class="button button-base" (click)="removeComment(comment.commentId)">
           Remove comment
         </button>
       </div>

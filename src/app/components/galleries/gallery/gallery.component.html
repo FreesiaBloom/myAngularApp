@@ -1,5 +1,5 @@
 <div class="row content" *ngIf="gallery && !showGalleryForm">
-  <div class="grid-6 imgContainer">
+  <div class="col-6 imgContainer">
     <div class="imgBase">
       <figure>
         <img alt="{{ gallery.title }}" src="{{ gallery.thumbUrl }}" />
@@ -14,11 +14,11 @@
       </div>
     </div>
   </div>
-  <div class="grid-6 headerGallery">
+  <div class="col-6 headerGallery">
     <div class="row borderBottom">
       <div class="headerTitle">
         <h2>{{ gallery.title }}</h2>
-        <button class="button button-small" (click)="showGalleryForm=true">Edit gallery</button>
+        <button class="button button-base" (click)="showGalleryForm=true">Edit gallery</button>
       </div>
       <p>
         <small>{{ gallery.dateCreated | polishDate | uppercase }}</small>
@@ -37,7 +37,7 @@
 </div>
 
 <div class="row addingGallery" [ngClass]="{'container': showGalleryForm}" *ngIf="showGalleryForm">
-  <button class="button button-small button-back" (click)="showGalleryForm=false">Back</button>
+  <button class="button button-base button-back" (click)="showGalleryForm=false">Back</button>
   <div class="addingHeader">
     <h2>Edit gallery</h2>
   </div>

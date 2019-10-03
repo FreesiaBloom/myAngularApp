@@ -20,7 +20,7 @@
     <div class="input-group" *ngIf="gallery.tags">
       <div class="tagHeader">
         <label>Tags</label>
-        <button type="button" (click)="addTag()" class="button button-small">Add tag</button>
+        <button type="button" (click)="addTag()" class="button button-base">Add tag</button>
       </div>
       <div class="tags">
         <div *ngFor="let item of gallery.tags; let i = index" class="tag">
@@ -42,7 +42,7 @@
   <div class="row">
     <div class="addingPhoto">
       <h4>Photos</h4>
-      <button type="button" (click)="addPhoto()" class="button button-small">Add photo</button>
+      <button type="button" (click)="addPhoto()" class="button button-base">Add photo</button>
     </div>
   </div>
   <fieldset class="formPhoto row" *ngFor="let photo of gallery.photos; let i = index">
@@ -55,7 +55,7 @@
           <p class="text-danger" [hidden]="thumbUrl.valid || thumbUrl.pristine">Thumbnail required!</p>
         </div>
         <div>
-          <button type="button" (click)="removePhoto(i)" class="button button-small">
+          <button type="button" (click)="removePhoto(i)" class="button button-base">
             <i class="fa fa-remove"></i>
           </button>
         </div>
@@ -70,6 +70,6 @@
   </fieldset>
 
   <div class="row savingGallery">
-    <button class="button button-small" [disabled]="!galleryForm.form.valid">Save gallery</button>
+    <button class="button button-base" [disabled]="!galleryForm.form.valid">Save gallery</button>
   </div>
 </form>
